@@ -546,18 +546,19 @@ function renderCEXAPIKeyInputs() {
             <div>
               <div style="background: ${hexToRgba(color)}; border-left: 3px solid ${color}; padding: 6px 8px; margin-bottom: 4px; border-radius: 4px;">
                 
-                <!-- ✅ Per-CEX Checkbox -->
+                <!-- ✅ Per-CEX Toggle Switch -->
                 <div class="uk-margin-small-bottom" style="display: flex; align-items: center; gap: 8px;">
-                  <label style="margin: 0; display: flex; align-items: center; gap: 6px; cursor: pointer;">
+                  <label class="cex-toggle-wrapper" style="margin: 0;">
                     <input type="checkbox" 
-                           class="uk-checkbox cex-enable-checkbox" 
+                           class="cex-enable-checkbox" 
                            data-cex="${cex}" 
                            id="cex_enable_${cex}"
                            ${isEnabled ? 'checked' : ''}>
-                    <span class="uk-text-small uk-text-bold" style="color: ${color};">
-                      <span uk-icon="icon: credit-card; ratio: 0.7"></span> ${cex}
-                    </span>
+                    <span class="cex-toggle-slider"></span>
                   </label>
+                  <span class="uk-text-small uk-text-bold" style="color: ${color}; cursor: pointer;" onclick="document.getElementById('cex_enable_${cex}').click()">
+                    ${cex}
+                  </span>
                 </div>
                 
                 <!-- API Key inputs -->

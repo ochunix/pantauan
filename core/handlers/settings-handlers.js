@@ -148,46 +148,56 @@
             return;
         }
 
-        // ✅ NEW: Check if CEX configuration is enabled
-        const cexConfigEnabled = getFromLocalStorage('CEX_CONFIG_ENABLED', false);
-
         // ✅ NEW: Collect CEX API Keys ONLY if checkbox is enabled
         const cexList = (typeof getEnabledCEXs === 'function') ? getEnabledCEXs() : [];
         const cexKeys = {};
         let cexSavedCount = 0;
+        let validationError = false;
 
-        if (cexConfigEnabled) {
-            cexList.forEach(cex => {
-                const apiKey = $(`#cex_apikey_${cex}`).val()?.trim();
-                const secretKey = $(`#cex_secret_${cex}`).val()?.trim();
-                const passphrase = $(`#cex_passphrase_${cex}`).val()?.trim();
+        cexList.forEach(cex => {
+            if (validationError) return;
 
-                if (apiKey && secretKey) {
-                    cexKeys[cex] = {
-                        ApiKey: apiKey,
-                        ApiSecret: secretKey
-                    };
+            const apiKey = $(`#cex_apikey_${cex}`).val()?.trim();
+            const secretKey = $(`#cex_secret_${cex}`).val()?.trim();
+            const passphrase = $(`#cex_passphrase_${cex}`).val()?.trim();
 
-                    if (cex === 'KUCOIN' || cex === 'BITGET' || cex === 'OKX') {
-                        if (passphrase) {
-                            cexKeys[cex].Passphrase = passphrase;
-                            cexSavedCount++;
-                        } else {
-                            UIkit.notification({
-                                message: `⚠️ ${cex} memerlukan Passphrase!`,
-                                status: 'warning',
-                                timeout: 3000
-                            });
-                            return;
-                        }
+            // ✅ VALIDATION: If CEX is enabled (in cexList), API Key & Secret are MANDATORY
+            if (!apiKey || !secretKey) {
+                UIkit.notification({
+                    message: `⚠️ API Key & Secret untuk ${cex} tidak boleh kosong!`,
+                    status: 'danger',
+                    timeout: 4000
+                });
+                $(`#cex_apikey_${cex}`).focus();
+                validationError = true;
+                return;
+            }
+
+            if (apiKey && secretKey) {
+                cexKeys[cex] = {
+                    ApiKey: apiKey,
+                    ApiSecret: secretKey
+                };
+
+                if (cex === 'KUCOIN' || cex === 'BITGET' || cex === 'OKX') {
+                    if (passphrase) {
+                        cexKeys[cex].Passphrase = passphrase;
                     } else {
-                        cexSavedCount++;
+                        UIkit.notification({
+                            message: `⚠️ ${cex} memerlukan Passphrase!`,
+                            status: 'danger',
+                            timeout: 4000
+                        });
+                        $(`#cex_passphrase_${cex}`).focus();
+                        validationError = true;
+                        return;
                     }
                 }
-            });
-        } else {
-            console.log('[SETTINGS] CEX configuration disabled, skipping API key save');
-        }
+                cexSavedCount++;
+            }
+        });
+
+        if (validationError) return; // Stop saving if validation fails
 
         const settingData = {
             nickname, jedaTimeGroup, jedaKoin, walletMeta,
