@@ -5214,12 +5214,14 @@ $(document).ready(function () {
                 const cexUp = String(t.cex || '').toUpperCase();
                 if (selectedCexs.length && !selectedCexs.includes(cexUp)) return false;
 
-                // ===== FILTER: Only show tokens with valid SC =====
-                // Skip tokens without smart contract address (untuk semua CEX, termasuk LBANK)
+                // ===== FILTER: Only show tokens with valid SC (Except INDODAX) =====
+                // Skip tokens without smart contract address
                 const sc = String(t.sc_in || t.contract_in || '').trim().toLowerCase();
                 const hasValidSC = sc && sc !== '0x' && sc.length > 6;
-                if (!hasValidSC) {
-                    return false; // ❌ Skip token tanpa SC valid
+                const isIndodax = cexUp === 'INDODAX';
+
+                if (!hasValidSC && !isIndodax) {
+                    return false; // ❌ Skip token tanpa SC valid kecuali INDODAX
                 }
 
                 // Filter harga
