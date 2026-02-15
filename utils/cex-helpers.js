@@ -12,18 +12,18 @@ function getEnabledCEXs() {
         // Get enabled CEXs from IndexedDB
         const enabledCEXs = getFromLocalStorage('ENABLED_CEXS', null);
 
-        // If no saved settings, default to ALL CEXs enabled (backward compatibility)
+        // If no saved settings, default to empty array (user must explicitly opt-in)
         if (!enabledCEXs || !Array.isArray(enabledCEXs)) {
-            return Object.keys(window.CONFIG_CEX || {});
+            return [];
         }
 
         // Filter out invalid CEX keys (in case CONFIG_CEX changed)
         const validCEXs = enabledCEXs.filter(cex => window.CONFIG_CEX && window.CONFIG_CEX[cex]);
 
-        return validCEXs.length > 0 ? validCEXs : Object.keys(window.CONFIG_CEX || {});
+        return validCEXs;
     } catch (error) {
         console.error('[CEX] Error getting enabled CEXs:', error);
-        return Object.keys(window.CONFIG_CEX || {});
+        return [];
     }
 }
 
