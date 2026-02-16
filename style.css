@@ -2719,50 +2719,74 @@ input[type="radio"] {
    CEX Settings - Toggle Switch
    ========================================================================== */
 .cex-toggle-wrapper {
-  position: relative;
-  display: inline-block;
-  width: 34px;
-  height: 20px;
+    position: relative;
+    display: inline-block;
+    width: 34px;
+    height: 20px;
 }
 
 .cex-toggle-wrapper input {
-  opacity: 0;
-  width: 0;
-  height: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
 
 .cex-toggle-slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  transition: .4s;
-  border-radius: 34px;
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
 }
 
 .cex-toggle-slider:before {
-  position: absolute;
-  content: "";
-  height: 14px;
-  width: 14px;
-  left: 3px;
-  bottom: 3px;
-  background-color: white;
-  transition: .4s;
-  border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 14px;
+    width: 14px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
 }
 
-input:checked + .cex-toggle-slider {
-  background-color: #22c55e;
+input:checked+.cex-toggle-slider {
+    background-color: #22c55e;
 }
 
-input:focus + .cex-toggle-slider {
-  box-shadow: 0 0 1px #22c55e;
+input:focus+.cex-toggle-slider {
+    box-shadow: 0 0 1px #22c55e;
 }
 
-input:checked + .cex-toggle-slider:before {
-  transform: translateX(14px);
+input:checked+.cex-toggle-slider:before {
+    transform: translateX(14px);
+}
+
+/* ==========================================================================
+   RPC CARDS - CEX Style (matching API Key Exchanger design)
+   ========================================================================== */
+
+.rpc-card-cex-style {
+    padding: 6px 8px;
+    margin-bottom: 4px;
+    border-radius: 4px;
+    border-left-width: 3px;
+    border-left-style: solid;
+    transition: all 0.2s ease;
+}
+
+.rpc-default-label {
+    font-size: 10px;
+    color: #64748b;
+    margin: 0 0 3px 0;
+}
+
+.rpc-default-label span {
+    color: #0052ff;
+    font-weight: 500;
 }

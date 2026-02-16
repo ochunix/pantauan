@@ -475,10 +475,28 @@ function hasValidSettings() {
         if (!Number.isFinite(jedaGrp) || jedaGrp <= 0) return false;
         if (!Number.isFinite(jedaKoin) || jedaKoin <= 0) return false;
 
-        // Pastikan setiap chain memiliki RPC terisi (userRPCs diisi saat simpan setting)
-        const chains = Object.keys(window.CONFIG_CHAINS || {});
+        // ✅ UPDATED: Hanya validasi RPC untuk ENABLED chains (chain toggle integration)
+        // Get enabled chains (if function exists, otherwise fallback to all chains)
+        const enabledChains = (typeof getEnabledChains === 'function')
+            ? getEnabledChains()
+            : Object.keys(window.CONFIG_CHAINS || {});
+
+        // If no chains enabled, settings invalid
+        if (enabledChains.length === 0) {
+            console.warn('[SETTINGS] No enabled chains found');
+            return false;
+        }
+
         const userRPCs = (s && typeof s.userRPCs === 'object') ? s.userRPCs : {};
-        if (!chains.every((c) => userRPCs && typeof userRPCs[c] === 'string' && userRPCs[c].trim().length > 0)) {
+
+        // Check RPC ONLY for enabled chains
+        const missingRPC = enabledChains.some(chain => {
+            const rpc = userRPCs[chain];
+            return !rpc || typeof rpc !== 'string' || rpc.trim().length === 0;
+        });
+
+        if (missingRPC) {
+            console.warn('[SETTINGS] Missing RPC for enabled chains');
             return false;
         }
 
@@ -512,15 +530,7 @@ function renderCEXAPIKeyInputs() {
         return;
     }
 
-    // ✅ FIX: Display ALL CEXs from CONFIG_CEX, not just enabled ones
-    // Checkbox controls whether CEX is used in features (scanner, filter, portfolio, etc)
-    // but ALL CEXs should be visible in settings for configuration
-    const cexList = Object.keys(window.CONFIG_CEX || {});
-    if (cexList.length === 0) {
-        container.innerHTML = '<p class="uk-text-muted uk-text-small">No CEX configured in CONFIG_CEX.</p>';
-        return;
-    }
-
+    container.innerHTML = ''; // Clear previous content
 
     const requiresPassphrase = ['KUCOIN', 'BITGET', 'OKX'];
     const hexToRgba = (hex, alpha = 0.08) => {
@@ -535,10 +545,14 @@ function renderCEXAPIKeyInputs() {
     // Load enabled CEXs
     const enabledCEXs = getEnabledCEXs();
 
+    // Get all CEXs from CONFIG_CEX
+    const cexList = Object.keys(CONFIG_CEX || {});
+
     let html = '<div class="uk-grid-small uk-child-width-1-2@s" uk-grid>';
     cexList.forEach(cex => {
         const cexConfig = CONFIG_CEX[cex];
         const color = cexConfig.WARNA || '#333';
+        const icon = cexConfig.ICON || ''; // ✅ Get CEX icon
         const needsPassphrase = requiresPassphrase.includes(cex);
         const isEnabled = enabledCEXs.includes(cex);
 
@@ -546,7 +560,7 @@ function renderCEXAPIKeyInputs() {
             <div>
               <div style="background: ${hexToRgba(color)}; border-left: 3px solid ${color}; padding: 6px 8px; margin-bottom: 4px; border-radius: 4px;">
                 
-                <!-- ✅ Per-CEX Toggle Switch -->
+                <!-- ✅ Per-CEX Toggle Switch + Icon + Name -->
                 <div class="uk-margin-small-bottom" style="display: flex; align-items: center; gap: 8px;">
                   <label class="cex-toggle-wrapper" style="margin: 0;">
                     <input type="checkbox" 
@@ -556,6 +570,7 @@ function renderCEXAPIKeyInputs() {
                            ${isEnabled ? 'checked' : ''}>
                     <span class="cex-toggle-slider"></span>
                   </label>
+                  ${icon ? `<img src="${icon}" alt="${cex}" style="width: 18px; height: 18px; border-radius: 4px; object-fit: contain;">` : ''}
                   <span class="uk-text-small uk-text-bold" style="color: ${color}; cursor: pointer;" onclick="document.getElementById('cex_enable_${cex}').click()">
                     ${cex}
                   </span>
@@ -621,6 +636,49 @@ function setupCEXCheckboxHandlers() {
     });
 
     console.log('[CEX Settings] Per-CEX checkbox handlers setup complete');
+}
+
+/**
+ * Setup handlers for per-chain checkboxes
+ * Manages enabled/disabled state for chains and RPC inputs
+ */
+function setupChainCheckboxHandlers() {
+    $('.chain-enable-checkbox').off('change.chainEnable').on('change.chainEnable', function () {
+        const chain = $(this).data('chain');
+        const isChecked = $(this).is(':checked');
+
+        // Enable/disable RPC input field
+        $(`#rpc_${chain}`).prop('disabled', !isChecked);
+
+        // Update enabled chains list
+        let enabledChains = (typeof getEnabledChains === 'function') ? getEnabledChains() : [];
+        if (isChecked) {
+            if (!enabledChains.includes(chain)) {
+                enabledChains.push(chain);
+            }
+        } else {
+            enabledChains = enabledChains.filter(c => c !== chain);
+        }
+
+        // Save to storage
+        if (typeof saveEnabledChains === 'function') {
+            saveEnabledChains(enabledChains);
+        }
+
+        // Show feedback
+        if (typeof toast !== 'undefined') {
+            const chainLabel = (CONFIG_CHAINS[chain]?.Nama_Chain || chain).toUpperCase();
+            if (isChecked) {
+                toast.info(`✅ Chain ${chainLabel} diaktifkan`);
+            } else {
+                toast.warning(`⚠️ Chain ${chainLabel} dinonaktifkan. Chain ini tidak akan muncul di multichain filter dan portfolio.`);
+            }
+        }
+
+        console.log(`[CHAIN Settings] ${chain} ${isChecked ? 'enabled' : 'disabled'}. Enabled list:`, enabledChains);
+    });
+
+    console.log('[CHAIN Settings] Per-chain checkbox handlers setup complete');
 }
 
 /**
@@ -802,7 +860,7 @@ function renderSettingsForm() {
         if (modalDexs[dex] !== undefined) $(this).val(modalDexs[dex]);
     });
 
-    // Generate RPC settings inputs with chain colors (compact horizontal layout)
+    // Generate RPC settings inputs with chain toggles and colors (compact horizontal layout)
     const chainList = Object.keys(CONFIG_CHAINS || {}).sort();
     // Get initial RPC values from database migrator (not hardcoded anymore)
     const getInitialRPC = (chain) => {
@@ -811,51 +869,98 @@ function renderSettingsForm() {
         }
         return '';
     };
-    let rpcHtml = '';
 
-    chainList.forEach(chain => {
-        const cfg = CONFIG_CHAINS[chain];
-        const suggestedRpc = getInitialRPC(chain);
-        const chainLabel = (cfg.Nama_Chain || chain).toUpperCase();
-        const chainColor = cfg.WARNA || '#333';
-        const chainIcon = cfg.ICON || '';
+    // Load enabled chains from storage (for initial toggle state only)
+    const enabledChains = (typeof getEnabledChains === 'function') ? getEnabledChains() : [];
+
+    // Helper function untuk hex to rgba (same as CEX)
+    const hexToRgba = (hex, alpha = 0.05) => {
+        hex = hex.replace('#', '');
+        if (hex.length > 6) hex = hex.substring(0, 6);
+        const r = parseInt(hex.substring(0, 2), 16);
+        const g = parseInt(hex.substring(2, 4), 16);
+        const b = parseInt(hex.substring(4, 6), 16);
+        return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    };
+
+    // ✅ Default RPC values (from user specification)
+    const defaultRPCs = {
+        'arbitrum': 'https://arbitrum-one-rpc.publicnode.com',
+        'base': 'https://1rpc.io/base',
+        'bsc': 'https://bsc-dataseed1.binance.org',
+        'ethereum': 'https://eth.llamarpc.com',
+        'polygon': 'https://polygon-pokt.nodies.app',
+        'solana': 'https://api.mainnet-beta.solana.com'
+    };
+
+    // ✅ RENDER RPC SETTINGS - CEX-style with colored background
+    let rpcHtml = '';
+    Object.keys(CONFIG_CHAINS || {}).forEach(chain => {
+        const chainLabel = CONFIG_CHAINS[chain]?.Nama_Chain || chain.toUpperCase();
+        const chainShortLabel = CONFIG_CHAINS[chain]?.Nama_Pendek || chain.toUpperCase();
+        const chainColor = CONFIG_CHAINS[chain]?.WARNA || '#666';
+        const chainIcon = CONFIG_CHAINS[chain]?.ICON || '';
+        const defaultRpc = defaultRPCs[chain.toLowerCase()] || CONFIG_CHAINS[chain]?.RPC?.[0] || '';
+        const isEnabled = enabledChains.includes(chain);
 
         rpcHtml += `
-            <div class="uk-margin-small-bottom" style="border-left: 3px solid ${chainColor}; padding-left: 8px; padding-top: 4px; padding-bottom: 4px; background: ${chainColor}08;">
-                <div class="uk-grid-small uk-flex-middle" uk-grid>
-                    <div class="uk-width-auto">
-                        <div class="uk-flex uk-flex-middle">
-                            ${chainIcon ? `<img src="${chainIcon}" alt="${chainLabel}" style="width:16px; height:16px; margin-right:6px; border-radius:50%;">` : ''}
-                            <label class="uk-text-bold uk-margin-remove" style="color: ${chainColor}; font-size: 13px; min-width: 90px;">
-                                ${chainLabel}
-                            </label>
-                        </div>
-                    </div>
-                    <div class="uk-width-expand">
-                        <input type="text" class="uk-input uk-form-small rpc-input"
+            <div class="rpc-card-cex-style" style="background: ${hexToRgba(chainColor)}; border-left: 3px solid ${chainColor};">
+                <!-- Toggle + Icon + Name -->
+                <div class="uk-margin-small-bottom" style="display: flex; align-items: center; gap: 8px;">
+                    <label class="cex-toggle-wrapper" style="margin: 0;">
+                        <input type="checkbox" 
+                               class="rpc-enable-toggle" 
                                data-chain="${chain}"
-                               placeholder="${suggestedRpc}"
-                               value=""
-                               style="font-size:12px; font-family: monospace; border-color: ${chainColor}40; padding: 4px 8px; height: 28px;">
-                        <small class="uk-text-muted" style="font-size: 10px;">Default: ${suggestedRpc || 'N/A'}</small>
-                    </div>
+                               ${isEnabled ? 'checked' : ''}>
+                        <span class="cex-toggle-slider"></span>
+                    </label>
+                    ${chainIcon ? `<img src="${chainIcon}" alt="${chainLabel}" style="width: 18px; height: 18px; border-radius: 4px; object-fit: contain;">` : ''}
+                    <span class="uk-text-small uk-text-bold" style="color: ${chainColor};">
+                        ${chainLabel.toUpperCase()}
+                    </span>
                 </div>
+                
+                <!-- RPC Input -->
+                <input type="text" 
+                       class="uk-input uk-form-small rpc-input"
+                       data-chain="${chain}"
+                       id="rpc_${chain}"
+                       placeholder="${defaultRpc}"
+                       style="margin-bottom: 3px; font-size: 0.78rem;">
+                <div class="rpc-default-label">Default: <span style="color: #0052ff;">${defaultRpc || 'N/A'}</span></div>
+                
+                <!-- Wallet Input -->
+                <input type="text"
+                       class="uk-input uk-form-small wallet-input"
+                       data-chain="${chain}"
+                       id="wallet_${chain}"
+                       placeholder="${chain === 'solana' ? 'Solana Address (base58)' : '0x... (EVM Address)'}"
+                       style="font-size: 0.78rem; margin-top: 3px;">
             </div>
         `;
     });
+
     $('#rpc-settings-group').html(rpcHtml);
 
-    // Load user RPCs dari setting (jika ada), atau auto-fill dengan default
+    // ✅ Load user RPCs and Wallets from settings
     const userRPCs = appSettings.userRPCs || {};
+    const userWallets = appSettings.userWallets || {};
+
     $('.rpc-input').each(function () {
         const chain = $(this).data('chain');
         if (userRPCs[chain]) {
-            // User sudah punya custom RPC
             $(this).val(userRPCs[chain]);
         } else {
-            // Auto-fill dengan default suggestion untuk kemudahan user
-            const initialRPC = getInitialRPC(chain);
-            if (initialRPC) $(this).val(initialRPC);
+            // Auto-fill with default RPC
+            const defaultRpc = defaultRPCs[chain.toLowerCase()];
+            if (defaultRpc) $(this).val(defaultRpc);
+        }
+    });
+
+    $('.wallet-input').each(function () {
+        const chain = $(this).data('chain');
+        if (userWallets[chain]) {
+            $(this).val(userWallets[chain]);
         }
     });
 
@@ -1548,11 +1653,23 @@ async function deferredInit() {
                 return a;
             }, {});
 
-            // Section 1: CHAIN (horizontal flex)
+            // Section 1: CHAIN (horizontal flex) - ✅ FILTERED BY ENABLED CHAINS
             const $chainSection = $('<div style="margin-bottom:15px;"></div>');
             $chainSection.append($('<div style="font-weight:700; color:#333; margin-bottom:8px; font-size:12px; border-bottom:2px solid #e5e5e5; padding-bottom:4px;">CHAIN</div>'));
             const $chainGrid = $('<div style="display:flex; flex-wrap:wrap; gap:6px;"></div>');
+
+            // ✅ Get enabled chains for filtering
+            const enabledChains = (typeof getEnabledChains === 'function')
+                ? getEnabledChains()
+                : Object.keys(CONFIG_CHAINS || {}); // Fallback: show all
+
             Object.keys(CONFIG_CHAINS || {}).forEach(k => {
+                // ✅ FILTER: Only show enabled chains
+                if (!enabledChains.includes(k)) {
+                    console.log(`[FILTER] Chain ${k} disabled, skipping chip render`);
+                    return; // Skip disabled chain
+                }
+
                 const short = (CONFIG_CHAINS[k].Nama_Pendek || k.substr(0, 3)).toUpperCase();
                 const id = `modal-fc-chain-${k}`; const cnt = byChain[k] || 0;
                 if (cnt === 0) return;
@@ -4806,13 +4923,25 @@ $(document).ready(function () {
     } catch (_) { }
 
     // Build chain icon links based on CONFIG_CHAINS
+    // ✅ NOW FILTERS BY ENABLED CHAINS (from chain-toggle-helpers.js)
     function renderChainLinks(activeKey = 'all') {
         const $wrap = $('#chain-links-container');
         if ($wrap.length === 0) return;
         $wrap.empty();
 
+        // ✅ Get enabled chains (only show icons for active chains)
+        const enabledChains = (typeof getEnabledChains === 'function')
+            ? getEnabledChains()
+            : Object.keys(CONFIG_CHAINS || {}); // Fallback: show all if function not available
+
         const currentPage = (window.location.pathname.split('/').pop() || 'index.html');
         Object.keys(CONFIG_CHAINS || {}).forEach(chainKey => {
+            // ✅ FILTER: Only render enabled chains
+            if (!enabledChains.includes(chainKey)) {
+                console.log(`[TOOLBAR] Chain ${chainKey} disabled, skipping icon render`);
+                return; // Skip this chain
+            }
+
             const chain = CONFIG_CHAINS[chainKey] || {};
             const isActive = String(activeKey).toLowerCase() === String(chainKey).toLowerCase();
             const style = isActive ? 'width:30px' : '';

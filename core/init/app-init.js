@@ -428,6 +428,7 @@ $(document).ready(function () {
 
     /**
      * Build chain icon links based on CONFIG_CHAINS
+     * ✅ NOW FILTERS BY ENABLED CHAINS (from chain-toggle-helpers.js)
      * @param {string} activeKey - The active chain key ('all' for multichain)
      */
     function renderChainLinks(activeKey = 'all') {
@@ -435,8 +436,19 @@ $(document).ready(function () {
         if ($wrap.length === 0) return;
         $wrap.empty();
 
+        // ✅ Get enabled chains (only show icons for active chains)
+        const enabledChains = (typeof getEnabledChains === 'function')
+            ? getEnabledChains()
+            : Object.keys(CONFIG_CHAINS || {}); // Fallback: show all if function not available
+
         const currentPage = (window.location.pathname.split('/').pop() || 'index.html');
         Object.keys(CONFIG_CHAINS || {}).forEach(chainKey => {
+            // ✅ FILTER: Only render enabled chains
+            if (!enabledChains.includes(chainKey)) {
+                console.log(`[TOOLBAR] Chain ${chainKey} disabled, skipping icon render`);
+                return; // Skip this chain
+            }
+
             const chain = CONFIG_CHAINS[chainKey] || {};
             const isActive = String(activeKey).toLowerCase() === String(chainKey).toLowerCase();
             const style = isActive ? 'width:30px' : '';

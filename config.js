@@ -1,7 +1,7 @@
 const CONFIG_APP = {
     APP: {
         NAME: "APP_PANTAUAN",
-        VERSION: "2026.02.15",
+        VERSION: "2026.02.16",
         SCAN_LIMIT: false,
         AUTORUN: true,
         AUTO_VOLUME: true,   // Set false untuk menyembunyikan & menonaktifkan fitur auto volume
@@ -36,6 +36,7 @@ try { if (typeof window !== 'undefined') { window.CONFIG_DB = window.CONFIG_DB |
 
 const CONFIG_CEX = {
     GATE: {
+        ICON: "assets/icons/cex/gate.png",
         WARNA: "#D5006D",  // Pink tua
         LINKS: {
             tradeToken: ({ token }) => `https://www.gate.com/trade/${String(token || '').toUpperCase()}_USDT`,
@@ -49,6 +50,7 @@ const CONFIG_CEX = {
         }
     },
     BINANCE: {
+        ICON: "assets/icons/cex/binance.png",
         WARNA: "#e0a50c",  // Orange tua
         LINKS: {
             tradeToken: ({ token }) => `https://www.binance.com/en/trade/${String(token || '').toUpperCase()}_USDT`,
@@ -62,6 +64,7 @@ const CONFIG_CEX = {
         }
     },
     MEXC: {
+        ICON: "assets/icons/cex/mexc.png",
         WARNA: "#1448ce",  // Biru muda
         LINKS: {
             tradeToken: ({ token }) => `https://www.mexc.com/exchange/${String(token || '').toUpperCase()}_USDT?_from=search`,
@@ -75,6 +78,7 @@ const CONFIG_CEX = {
         }
     },
     KUCOIN: {
+        ICON: "assets/icons/cex/kucoin.png",
         WARNA: "#29b3af",
         LINKS: {
             tradeToken: ({ token }) => `https://www.kucoin.com/trade/${String(token || '').toUpperCase()}-USDT`,
@@ -89,6 +93,7 @@ const CONFIG_CEX = {
         }
     },
     BITGET: {
+        ICON: "assets/icons/cex/bitget.png",
         WARNA: "#1aaaba",
         LINKS: {
             tradeToken: ({ token }) => `https://www.bitget.com/spot/${String(token || '').toUpperCase()}USDT`,
@@ -103,6 +108,7 @@ const CONFIG_CEX = {
         }
     },
     BYBIT: {
+        ICON: "assets/icons/cex/bybit.png",
         WARNA: "#f29900",
         LINKS: {
             tradeToken: ({ token }) => `https://www.bybit.com/trade/spot/${String(token || '').toUpperCase()}/USDT`,
@@ -117,6 +123,7 @@ const CONFIG_CEX = {
         }
     },
     INDODAX: {
+        ICON: "assets/icons/cex/indodax.png",
         WARNA: "#1285b5",
         LINKS: {
             tradeToken: ({ token }) => `https://indodax.com/trade/${String(token || '').toUpperCase()}IDR`,
@@ -147,6 +154,7 @@ const CONFIG_CEX = {
     //     }
     // },
     HTX: {
+        ICON: "assets/icons/cex/htx.png",
         WARNA: "#008cd6",  // HTX Blue color
         LINKS: {
             tradeToken: ({ token }) => `https://www.htx.com/trade/${String(token || '').toLowerCase()}_usdt`,
@@ -162,6 +170,7 @@ const CONFIG_CEX = {
         }
     },
     OKX: {
+        ICON: "assets/icons/cex/okx.png",
         WARNA: "#000000",
         LINKS: {
             tradeToken: ({ token }) => `https://www.okx.com/trade-spot/${String(token || '').toLowerCase()}-usdt`,
