@@ -436,6 +436,15 @@ $(document).ready(function () {
         if ($wrap.length === 0) return;
         $wrap.empty();
 
+        // Robot icon: only active when multichain mode (chain=all) and no CEX mode
+        const isCEXActive = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+        const isMultichain = (!activeKey || activeKey === 'all');
+        if (isMultichain && !isCEXActive) {
+            $('#multichain_scanner').addClass('active-mode');
+        } else {
+            $('#multichain_scanner').removeClass('active-mode');
+        }
+
         // ✅ Get enabled chains (only show icons for active chains)
         const enabledChains = (typeof getEnabledChains === 'function')
             ? getEnabledChains()
@@ -451,24 +460,27 @@ $(document).ready(function () {
 
             const chain = CONFIG_CHAINS[chainKey] || {};
             const isActive = String(activeKey).toLowerCase() === String(chainKey).toLowerCase();
-            const style = isActive ? 'width:30px' : '';
-            const width = isActive ? 30 : 24;
+
             const icon = chain.ICON || '';
             const name = chain.Nama_Chain || chainKey.toUpperCase();
+            const chainColor = chain.WARNA || '#2563eb';
+            const activeClass = isActive ? 'active' : '';
+            const activeStyle = isActive
+                ? `--icon-color: ${chainColor}; --icon-shadow: ${chainColor}40;`
+                : '';
+
             // Determine running state for this chain
             let running = false;
             try {
                 const f = getFromLocalStorage(`FILTER_${String(chainKey).toUpperCase()}`, {}) || {};
                 running = String(f.run || 'NO').toUpperCase() === 'YES';
             } catch (_) { }
-            // Do not apply ring or enlargement; small dot indicator handled elsewhere
-            const ring = '';
+
             const linkHTML = `
-                <span class="chain-link icon" data-chain="${chainKey}" style="display:inline-block; ${style} margin-right:4px;">
-                    <a href="${currentPage}?chain=${encodeURIComponent(chainKey)}" title="SCANNER ${name.toUpperCase()}">
-                        <img src="${icon}" alt="${name} icon" width="${width}" style="${ring}">
-                    </a>
-                </span>`;
+                <a href="${currentPage}?chain=${encodeURIComponent(chainKey)}" class="chain-link ${activeClass}" data-chain="${chainKey}"
+                   style="${activeStyle}" title="SCANNER ${name.toUpperCase()}">
+                    <img class="icon" src="${icon}" alt="${name} icon" width="24" />
+                </a>`;
             $wrap.append(linkHTML);
         });
         try { updateToolbarRunIndicators(); } catch (_) { }

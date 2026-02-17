@@ -228,6 +228,23 @@
         return flatResult;
     }
 
+    /**
+     * Gabungkan semua token dari database per-chain (TOKEN_BSC, TOKEN_ERC, dll).
+     * Hasilnya sudah di-flatten (1 row per cex per token).
+     * Dipakai oleh CEX mode agar sumber data jelas: semua chain → filter by CEX.
+     */
+    function getAllChainTokensFlat() {
+        const chains = Object.keys(window.CONFIG_CHAINS || {});
+        let raw = [];
+        chains.forEach(chainKey => {
+            const chainTokens = getTokensChain(chainKey);
+            if (Array.isArray(chainTokens)) raw.push(...chainTokens);
+        });
+        // Fallback ke TOKEN_MULTICHAIN jika per-chain kosong
+        if (raw.length === 0) raw = getTokensMulti() || [];
+        return flattenDataKoin(raw);
+    }
+
     // =================================================================================
     // EXPOSE TO GLOBAL SCOPE (window)
     // =================================================================================
@@ -244,6 +261,7 @@
         window.getFlattenedSortedMulti = getFlattenedSortedMulti;
         window.getFlattenedSortedChain = getFlattenedSortedChain;
         window.flattenDataKoin = flattenDataKoin;
+        window.getAllChainTokensFlat = getAllChainTokensFlat;
     }
 
 })(); // End IIFE

@@ -314,18 +314,20 @@
         if (Object.keys(cexKeys).length > 0) {
             const encryptedKeys = (typeof appEncrypt === 'function') ? appEncrypt(cexKeys) : cexKeys;
             saveToLocalStorage('CEX_API_KEYS', encryptedKeys || cexKeys);
-            localStorage.setItem('CEX_KEYS_MIGRATED', 'true');
+            saveToLocalStorage('CEX_KEYS_MIGRATED', true);
             console.log(`[SETTINGS] Saved ${cexSavedCount} CEX API key(s) to IndexedDB`);
 
-            // Cleanup legacy localStorage MULTI_* keys
-            // ✅ Get CEX list dynamically from CONFIG_CEX (no hardcode!)
-            const allCexList = (typeof getEnabledCEXs === 'function') ? getEnabledCEXs() : [];
-            allCexList.forEach(cex => {
-                localStorage.removeItem(`MULTI_apikey${cex}`);
-                localStorage.removeItem(`MULTI_secretkey${cex}`);
-                localStorage.removeItem(`MULTI_passphrase${cex}`);
-            });
-            console.log('[SETTINGS] Cleaned up legacy localStorage MULTI_* keys');
+            // Cleanup legacy localStorage MULTI_* keys (jika masih ada)
+            try {
+                const allCexList = (typeof getEnabledCEXs === 'function') ? getEnabledCEXs() : [];
+                allCexList.forEach(cex => {
+                    localStorage.removeItem(`MULTI_apikey${cex}`);
+                    localStorage.removeItem(`MULTI_secretkey${cex}`);
+                    localStorage.removeItem(`MULTI_passphrase${cex}`);
+                });
+                localStorage.removeItem('CEX_KEYS_MIGRATED'); // hapus flag lama
+            } catch (_) { }
+            console.log('[SETTINGS] Cleaned up legacy localStorage keys');
         }
 
         try { setLastAction("SIMPAN SETTING"); } catch (_) { }

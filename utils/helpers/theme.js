@@ -10,7 +10,7 @@
  * - applyThemeForMode: Apply theme colors and styles based on mode
  */
 
-(function() {
+(function () {
     'use strict';
 
     // =================================================================================
@@ -76,8 +76,8 @@
                 } else {
                     body.classList.remove('dark-mode', 'uk-dark');
                 }
-                try { if (typeof updateDarkIcon === 'function') updateDarkIcon(!!st.darkMode); } catch(_) {}
-            } catch(_) {}
+                try { if (typeof updateDarkIcon === 'function') updateDarkIcon(!!st.darkMode); } catch (_) { }
+            } catch (_) { }
 
             root.style.setProperty('--theme-accent', accent);
             const chainLabel = document.getElementById('current-chain-label');
@@ -99,10 +99,10 @@
                     document.title = `${nm} SCANNER`;
                     if (fav) fav.setAttribute('href', cfg.ICON || window.DEFAULT_FAVICON_HREF || fav.getAttribute('href'));
                 } else {
-                    document.title = 'ALL SCANNER';
+                    document.title = 'SCANNER MULTICHAIN';
                     if (fav && window.DEFAULT_FAVICON_HREF) fav.setAttribute('href', window.DEFAULT_FAVICON_HREF);
                 }
-            } catch(_) {}
+            } catch (_) { }
 
             // Inject or update a style tag for theme overrides
             let styleEl = document.getElementById('dynamic-theme-style');

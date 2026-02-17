@@ -35,7 +35,7 @@
           <div class="uk-flex uk-flex-middle uk-flex-wrap" style="align-items: center;">
             <h3 id="judul" class="uk-margin-remove"
               style="font-size: 18px; line-height: 1.4; color: #000; font-weight: bold; display: inline-flex; align-items: center;">
-              <span id="app-title">WATCHMARKET</span>
+              <span id="app-title"></span>
               <span id="current-chain-label" style="margin-left:3px;">[ALL]</span>
             </h3>
             &nbsp;&nbsp;
@@ -47,15 +47,18 @@
 
         <!-- Kanan: Toolbar icon -->
         <div class="uk-width-auto@s uk-width-1-1">
-          <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-right@s toolbar-scroll"
-            style="gap: 8px; padding:0px 5px;">
-            <a href="index.html?chain=all" id="multichain_scanner"><img class="icon" title="SCANNER MUTLTICHAIN"
-                width="24px" src="assets/icons/robot.png" /></a>
-            <span id="chain-links-container"></span>
+          <div class="uk-flex uk-flex-middle uk-flex-wrap uk-flex-right@s toolbar-scroll">
+            <a href="index.html?chain=all" id="multichain_scanner" style="--icon-color: #10b981; --icon-shadow: rgba(16,185,129,0.25);"><img class="icon" title="SCANNER MULTICHAIN"
+                width="24" src="assets/icons/robot.png" /></a>
 
+            <span id="chain-links-container"></span>
 
             <img class="icon" id="SettingConfig" data-feature="settings" title="CONFIG SCANNER" width="24px"
               src="assets/icons/database.png" />
+
+            <!-- CEX Icons Container - Populated by JS -->
+
+            <span id="cex-links-container"></span>
 
             <!-- Calculator Icon - Always accessible -->
             <img class="icon" id="openCalculatorModal" title="KALKULATOR CRYPTO (Ctrl+K)" width="24px"
@@ -1255,6 +1258,8 @@
   <script src="utils/helpers/chain-helpers.js"></script>
   <script src="utils/helpers/theme.js"></script>
   <script src="utils/helpers/ui-utils.js"></script>
+  <script src="utils/cex-helpers.js"></script><!-- CEX Helpers - Must load before CEX Mode Manager -->
+  <script src="js/cex-mode-manager.js"></script><!-- CEX Mode Manager -->
 
   <!-- 5b. PERFORMANCE UTILITIES (NEW) -->
   <script src="utils/timer-manager.js"></script><!-- Central timer control -->
@@ -1297,7 +1302,7 @@
   <!-- 11. LEGACY FILES (remaining code) -->
   <script src="scanner.js"></script><!-- Remaining scanner logic -->
   <!-- CEX Selection Helpers -->
-  <script src="utils/cex-helpers.js"></script>
+  <!-- cex-helpers.js moved to load earlier (before cex-mode-manager.js) -->
   <!-- Chain Toggle Helpers -->
   <script src="utils/chain-toggle-helpers.js"></script>
 

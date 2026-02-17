@@ -293,27 +293,17 @@
     window.exportIDB = async function () {
         try {
             const items = await idbGetAll();
-            // Also capture native localStorage items (portfolio wallet data, etc.)
-            const lsItems = [];
-            try {
-                for (let i = 0; i < localStorage.length; i++) {
-                    const k = localStorage.key(i);
-                    if (k && (k.startsWith('MULTI_') || k === 'WALLET_UPDATE_REPORT' || k === 'CEX_KEYS_MIGRATED')) {
-                        lsItems.push({ key: k, val: localStorage.getItem(k) });
-                    }
-                }
-            } catch (_) { }
+            // Semua data sudah di IndexedDB — tidak perlu export raw localStorage lagi
             return {
-                schema: 'kv-v1',
+                schema: 'kv-v2',
                 db: DB_NAME,
                 store: STORE_KV,
                 prefix: (window.storagePrefix || ''),
                 exportedAt: new Date().toISOString(),
                 count: items.length,
-                items,
-                localStorageItems: lsItems.length > 0 ? lsItems : undefined
+                items
             };
-        } catch (e) { return { schema: 'kv-v1', error: String(e) }; }
+        } catch (e) { return { schema: 'kv-v2', error: String(e) }; }
     };
 
     window.restoreIDB = async function (payload, opts) {
@@ -366,21 +356,35 @@
             }
         }
 
-        // Restore native localStorage items (portfolio wallet data, etc.)
+        // Backward compat: import old localStorageItems ke IndexedDB (bukan raw localStorage)
         let lsOk = 0;
         if (Array.isArray(payload.localStorageItems)) {
-            console.log('[Restore] Restoring localStorage items:', payload.localStorageItems.length);
+            console.log('[Restore] Migrating legacy localStorage items to IndexedDB:', payload.localStorageItems.length);
             for (const it of payload.localStorageItems) {
                 try {
                     if (it && it.key) {
-                        localStorage.setItem(it.key, it.val);
-                        lsOk++;
+                        // Map legacy keys ke IndexedDB key
+                        let idbKey = it.key;
+                        let val = it.val;
+
+                        // Skip legacy MULTI_* keys (sudah di CEX_API_KEYS)
+                        if (idbKey.startsWith('MULTI_apikey') || idbKey.startsWith('MULTI_secretkey') || idbKey.startsWith('MULTI_passphrase')) continue;
+
+                        // Parse JSON string values
+                        try { val = JSON.parse(val); } catch (_) { }
+
+                        // Rename legacy keys
+                        if (idbKey === 'MULTI_USDTRate') idbKey = 'PRICE_RATE_USDT';
+
+                        const finalKey = currentPrefix + idbKey;
+                        const res = await idbSet(finalKey, val);
+                        if (res) { cache[finalKey] = val; lsOk++; }
                     }
                 } catch (_) { }
             }
         }
 
-        console.log('[Restore] Complete - OK:', ok, 'Fail:', fail, 'LocalStorage:', lsOk);
+        console.log('[Restore] Complete - OK:', ok, 'Fail:', fail, 'LegacyMigrated:', lsOk);
         return { ok, fail, lsRestored: lsOk };
     };
 

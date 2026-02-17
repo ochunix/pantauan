@@ -326,11 +326,12 @@ async function startScanner(tokensToScan, settings, tableBodyId) {
     if (mMode.type === 'single') {
         allowedChains = [String(mMode.chain).toLowerCase()];
     } else {
-        const fm = getFilterMulti();
+        // CEX mode: pakai per-CEX filter, multichain: pakai FILTER_MULTICHAIN
+        const fm = (window.CEXModeManager && window.CEXModeManager.isCEXMode() && typeof getFilterCEX === 'function')
+            ? getFilterCEX(window.CEXModeManager.getSelectedCEX())
+            : getFilterMulti();
         allowedChains = (fm.chains && fm.chains.length)
-            // Jika ada filter chain, gunakan itu.
             ? fm.chains.map(c => String(c).toLowerCase())
-            // Jika tidak, gunakan semua chain dari konfigurasi.
             : Object.keys(CONFIG_CHAINS || {});
     }
 
@@ -419,7 +420,7 @@ async function startScanner(tokensToScan, settings, tableBodyId) {
         const lockAcquired = typeof setGlobalScanLock === 'function'
             ? setGlobalScanLock(filterKey, {
                 tabId: typeof getTabId === 'function' ? getTabId() : null,
-                mode: mode.type === 'multi' ? 'MULTICHAIN' : (mode.chain || 'UNKNOWN').toUpperCase(),
+                mode: mode.type === 'multi' ? 'MULTICHAIN' : mode.type === 'cex' ? `CEX_${(mode.cex || 'UNKNOWN')}` : (mode.chain || 'UNKNOWN').toUpperCase(),
                 chain: chainLabel
             })
             : true;
@@ -732,6 +733,18 @@ async function startScanner(tokensToScan, settings, tableBodyId) {
             if (modeNow.type === 'single') {
                 const list = getTokensChain(modeNow.chain);
                 stillExists = Array.isArray(list) && list.some(t => String(t.id) === String(token.id));
+            } else if (window.CEXModeManager && window.CEXModeManager.isCEXMode()) {
+                // CEX mode: token datang dari per-chain DB, cek di chain token tersebut
+                const chainKey = String(token.chain || '').toLowerCase();
+                if (chainKey && typeof getTokensChain === 'function') {
+                    const list = getTokensChain(chainKey);
+                    stillExists = Array.isArray(list) && list.some(t => String(t.id) === String(token.id));
+                }
+                // Fallback: cek juga di TOKEN_MULTICHAIN
+                if (!stillExists) {
+                    const list = getTokensMulti();
+                    stillExists = Array.isArray(list) && list.some(t => String(t.id) === String(token.id));
+                }
             } else {
                 const list = getTokensMulti();
                 stillExists = Array.isArray(list) && list.some(t => String(t.id) === String(token.id));

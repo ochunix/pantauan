@@ -82,7 +82,7 @@ let activeSingleChainKey = null; // Active chain key (single mode)
 
 // --- Application Initialization ---
 
-// Per-mode app state is merged into FILTER_<CHAIN> / FILTER_MULTICHAIN
+// Per-mode app state is merged into FILTER_<CHAIN> / FILTER_MULTICHAIN / FILTER_CEX_<NAME>
 // Fields: { run: 'YES'|'NO', darkMode: boolean, sort: 'A'|'Z', pnl: number, ... }
 function getAppState() {
     try {
@@ -335,6 +335,56 @@ $(document).off('click.globalEdit').on('click.globalEdit', '.edit-token-button',
 });
 
 function refreshTokensTable() {
+    // === CEX MODE HANDLING ===
+    if (window.CEXModeManager && window.CEXModeManager.isCEXMode()) {
+        const currentCEX = window.CEXModeManager.getSelectedCEX();
+        // Pakai per-CEX filter (FILTER_CEX_BINANCE, dll)
+        const fm = (typeof getFilterCEX === 'function') ? getFilterCEX(currentCEX) : getFilterMulti();
+        const chainsSel = (fm.chains || []).map(c => String(c).toLowerCase());
+        const pairSel = (fm.pair || []).map(p => String(p).toUpperCase());
+        const dexSel = (fm.dex || []).map(d => String(d).toLowerCase());
+
+        // Fetch tokens from all chain DBs, filtered by CEX
+        window.CEXModeManager.getEnabledTokensPerCEX(currentCEX).then(tokens => {
+            let filtered = tokens;
+
+            // Apply Chain Filter if active
+            if (chainsSel.length > 0) {
+                filtered = filtered.filter(t => chainsSel.includes(String(t.chain || '').toLowerCase()));
+            }
+
+            // Apply PAIR Filter if active
+            if (pairSel.length > 0) {
+                filtered = filtered.filter(t => {
+                    const chainCfg = (window.CONFIG_CHAINS || {})[(t.chain || '').toLowerCase()] || {};
+                    const pd = chainCfg.PAIRDEXS || {};
+                    const p = String(t.symbol_out || '').toUpperCase().trim();
+                    const mapped = pd[p] ? p : 'NON';
+                    return pairSel.includes(mapped);
+                });
+            }
+
+            // Apply DEX Filter if active
+            if (dexSel.length > 0) {
+                filtered = filtered.filter(t => (t.dexs || []).some(d => dexSel.includes(String(d.dex || '').toLowerCase())));
+            }
+
+            // Apply sort preference (A-Z / Z-A)
+            const sortPref = fm.sort || 'A';
+            if (typeof sortBySymbolIn === 'function') {
+                filtered = sortBySymbolIn(filtered, sortPref);
+            }
+
+            window.filteredTokens = [...filtered];
+            window.currentListOrderMulti = [...filtered];
+
+            loadKointoTable(filtered, 'dataTableBody');
+            try { applySortToggleState(); } catch (_) { }
+            attachEditButtonListeners();
+        });
+        return;
+    }
+
     const storedFilter = getFromLocalStorage('FILTER_MULTICHAIN', null);
     const filtersActive = storedFilter !== null; // null = first load
 
@@ -1237,9 +1287,21 @@ async function deferredInit() {
         if (m.mode === 'multi') {
             const fmNow = getFilterMulti();
             const chainsSel = fmNow.chains || [];
-            const cexSel = fmNow.cex || [];
+            let cexSel = fmNow.cex || [];
             const dexSel = (fmNow.dex || []).map(x => String(x).toLowerCase());
-            const flat = flattenDataKoin(getTokensMulti()) || [];
+
+            // CEX mode: pakai semua chain DB, filter by CEX
+            const cexActive = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+            let flat = cexActive
+                ? (typeof getAllChainTokensFlat === 'function' ? getAllChainTokensFlat() : flattenDataKoin(getTokensMulti()) || [])
+                : flattenDataKoin(getTokensMulti()) || [];
+
+            if (cexActive) {
+                const selCEX = window.CEXModeManager.getSelectedCEX();
+                flat = flat.filter(t => String(t.cex || '').toUpperCase() === selCEX);
+                cexSel = [selCEX];
+            }
+
             const saved = getFromLocalStorage('FILTER_MULTICHAIN', null);
 
             if (!saved) {
@@ -1313,12 +1375,24 @@ async function deferredInit() {
 
         let $sum = $(`<span id="total-koin-badge" class="uk-text-small" style="font-weight:bolder; color: white; background-color: ${accentColor}; padding: 2px 8px; border-radius: 4px;">TOTAL KOIN: 0</span>`);
         if (m.mode === 'multi') {
-            const fmNow = getFilterMulti();
+            // CEX mode: pakai per-CEX filter, bukan FILTER_MULTICHAIN
+            const cexActive = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+            const fmNow = (cexActive && typeof getFilterCEX === 'function')
+                ? getFilterCEX(window.CEXModeManager.getSelectedCEX())
+                : getFilterMulti();
             // FIX: Don't default to all chains, respect the user's saved empty selection.
             const chainsSel = fmNow.chains || [];
-            const cexSel = fmNow.cex || [];
+            let cexSel = fmNow.cex || [];
             const dexSel = (fmNow.dex || []).map(x => String(x).toLowerCase());
-            const flat = flattenDataKoin(getTokensMulti()) || [];
+            let flat = cexActive
+                ? (typeof getAllChainTokensFlat === 'function' ? getAllChainTokensFlat() : flattenDataKoin(getTokensMulti()) || [])
+                : flattenDataKoin(getTokensMulti()) || [];
+
+            if (cexActive) {
+                const selCEX = window.CEXModeManager.getSelectedCEX();
+                flat = flat.filter(t => String(t.cex || '').toUpperCase() === selCEX);
+                cexSel = [selCEX];
+            }
             const byChain = flat.reduce((a, t) => { const k = String(t.chain || '').toLowerCase(); a[k] = (a[k] || 0) + 1; return a; }, {});
             const byCex = flat.filter(t => (chainsSel.length === 0 || chainsSel.includes(String(t.chain || '').toLowerCase())))
                 .reduce((a, t) => { const k = String(t.cex || '').toUpperCase(); a[k] = (a[k] || 0) + 1; return a; }, {});
@@ -1386,7 +1460,13 @@ async function deferredInit() {
                 const cex = $('#modal-filter-sections').find('label.fc-cex input:checked').map(function () { return $(this).closest('label').attr('data-val').toUpperCase(); }).get();
                 const dex = $('#modal-filter-sections').find('label.fc-dex input:checked').map(function () { return $(this).closest('label').attr('data-val').toLowerCase(); }).get();
 
-                setFilterMulti({ chains, cex, dex });
+                // CEX mode → simpan ke FILTER_CEX_<NAME>, multi → simpan ke FILTER_MULTICHAIN
+                const isCEXModeNow = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+                if (isCEXModeNow && typeof setFilterCEX === 'function') {
+                    setFilterCEX(window.CEXModeManager.getSelectedCEX(), { chains, dex });
+                } else {
+                    setFilterMulti({ chains, cex, dex });
+                }
 
                 // Build detailed toast message
                 const addChains = chains.filter(x => !prevChains.includes(x)).map(x => x.toUpperCase());
@@ -1402,7 +1482,8 @@ async function deferredInit() {
                 if (delCex.length) parts.push(`-CEX: ${delCex.join(', ')}`);
                 if (addDex.length) parts.push(`+DEX: ${addDex.join(', ')}`);
                 if (delDex.length) parts.push(`-DEX: ${delDex.join(', ')}`);
-                const msg = parts.length ? parts.join(' | ') : `Filter MULTI diperbarui: CHAIN=${chains.length}, CEX=${cex.length}`;
+                const modeLabel = isCEXModeNow ? `CEX ${window.CEXModeManager.getSelectedCEX()}` : 'MULTI';
+                const msg = parts.length ? parts.join(' | ') : `Filter ${modeLabel} diperbarui: CHAIN=${chains.length}, DEX=${dex.length}`;
                 try { if (typeof toast !== 'undefined' && toast.info) toast.info(msg); } catch (_) { }
 
                 // searchInput in filter card is now used for both monitoring and management tables
@@ -1617,6 +1698,8 @@ async function deferredInit() {
     }
 
     renderFilterCard();
+    // Expose untuk dipanggil ulang dari CEX mode init
+    window.renderFilterCard = renderFilterCard;
 
     // Render filter card to modal
     function renderFilterCardToModal() {
@@ -1624,11 +1707,22 @@ async function deferredInit() {
         if (!$wrap.length) return;
         $wrap.empty();
 
-        const m = getMode();
+        // ✅ CEX MODE: Treat as multichain mode (show all chains)
+        const isCEXMode = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+        let m = getMode();
+
+        // Override mode to 'multi' if CEX mode is active
+        if (isCEXMode) {
+            m = { mode: 'multi', chain: null };
+        }
 
         // Determine accent color based on mode
         let accentColor = '#5c9514'; // Default for multi-chain
-        if (m.mode === 'single') {
+        if (isCEXMode) {
+            const currentCEX = window.CEXModeManager.getSelectedCEX();
+            const cexConfig = window.CONFIG_CEX?.[currentCEX];
+            accentColor = cexConfig?.WARNA || '#1448ce';
+        } else if (m.mode === 'single') {
             const cfg = (CONFIG_CHAINS && CONFIG_CHAINS[m.chain]) ? CONFIG_CHAINS[m.chain] : null;
             accentColor = cfg?.WARNA || '#333';
         }
@@ -1637,11 +1731,23 @@ async function deferredInit() {
         let $sum = $(`<span id="modal-total-koin-badge" class="uk-text-small" style="font-weight:bolder; color: white; background-color: ${accentColor}; padding: 2px 8px; border-radius: 4px;">TOTAL KOIN: 0</span>`);
 
         if (m.mode === 'multi') {
-            const fmNow = getFilterMulti();
+            // CEX mode: pakai per-CEX filter, bukan FILTER_MULTICHAIN
+            const isCEXModeNow = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+            const fmNow = (isCEXModeNow && typeof getFilterCEX === 'function')
+                ? getFilterCEX(window.CEXModeManager.getSelectedCEX())
+                : getFilterMulti();
             const chainsSel = fmNow.chains || [];
-            const cexSel = fmNow.cex || [];
+            let cexSel = fmNow.cex || [];
             const dexSel = (fmNow.dex || []).map(x => String(x).toLowerCase());
-            const flat = flattenDataKoin(getTokensMulti()) || [];
+            let flat = isCEXModeNow
+                ? (typeof getAllChainTokensFlat === 'function' ? getAllChainTokensFlat() : flattenDataKoin(getTokensMulti()) || [])
+                : flattenDataKoin(getTokensMulti()) || [];
+
+            if (isCEXModeNow) {
+                const selCEX = window.CEXModeManager.getSelectedCEX();
+                flat = flat.filter(t => String(t.cex || '').toUpperCase() === selCEX);
+                cexSel = [selCEX];
+            }
             const byChain = flat.reduce((a, t) => { const k = String(t.chain || '').toLowerCase(); a[k] = (a[k] || 0) + 1; return a; }, {});
             const byCex = flat.filter(t => (chainsSel.length === 0 || chainsSel.includes(String(t.chain || '').toLowerCase())))
                 .reduce((a, t) => { const k = String(t.cex || '').toUpperCase(); a[k] = (a[k] || 0) + 1; return a; }, {});
@@ -1684,31 +1790,15 @@ async function deferredInit() {
                 `));
             });
             $chainSection.append($chainGrid);
-            $wrap.append($chainSection);
 
-            // Section 2: EXCHANGER (horizontal flex)
-            const $cexSection = $('<div style="margin-bottom:15px;"></div>');
-            $cexSection.append($('<div style="font-weight:700; color:#333; margin-bottom:8px; font-size:12px; border-bottom:2px solid #e5e5e5; padding-bottom:4px;">EXCHANGER</div>'));
-            const $cexGrid = $('<div style="display:flex; flex-wrap:wrap; gap:6px;"></div>');
-            getEnabledCEXs().forEach(cx => {
-                const id = `modal-fc-cex-${cx}`; const cnt = byCex[cx] || 0; if (cnt === 0) return; const checked = cexSel.includes(cx.toUpperCase());
-                const col = CONFIG_CEX[cx].WARNA || '#333';
-                $cexGrid.append($(`
-                    <label class="fc-cex" data-val="${cx}" data-color="${col}" for="${id}" style="display:flex; align-items:center; gap:3px; padding:3px 8px; border-radius:3px; cursor:pointer; border:2px solid ${checked ? col : 'transparent'}; background:${checked ? '#f8f8f8' : 'white'};">
-                        <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} style="width:11px; height:11px; margin:0;">
-                        <span style="font-weight:600; font-size:10px; color:${col};">${cx}</span>
-                        <span style="font-size:9px; opacity:0.7; color:#555;">[${cnt}]</span>
-                    </label>
-                `));
-            });
-            $cexSection.append($cexGrid);
-            $wrap.append($cexSection);
+            // Section 2: EXCHANGER / PAIR
+            // ✅ CEX MODE: Hide exchanger filter if in Per-CEX mode
+            const isCEXMode = window.CEXModeManager && window.CEXModeManager.isCEXMode();
 
-            // Section 3: DEX (horizontal flex)
+            // Build DEX section (shared between CEX and multichain)
             const $dexSection = $('<div style="margin-bottom:15px;"></div>');
             $dexSection.append($('<div style="font-weight:700; color:#333; margin-bottom:8px; font-size:12px; border-bottom:2px solid #e5e5e5; padding-bottom:4px;">DEX</div>'));
             const $dexGrid = $('<div style="display:flex; flex-wrap:wrap; gap:6px;"></div>');
-            // ✅ Filter: Hanya tampilkan DEX asli (not disabled, not Meta-DEX)
             const metaDexEnabled = (CONFIG_APP && CONFIG_APP.APP && CONFIG_APP.APP.META_DEX === true);
             Object.keys(CONFIG_DEXS || {}).forEach(dx => {
                 const dexConfig = CONFIG_DEXS[dx];
@@ -1727,12 +1817,105 @@ async function deferredInit() {
                 `));
             });
             $dexSection.append($dexGrid);
-            $wrap.append($dexSection);
 
-            const saved = getFromLocalStorage('FILTER_MULTICHAIN', null);
+            if (isCEXMode) {
+                console.log('[FILTER] CEX Mode active - hiding Exchanger section');
+
+                // === PAIR SECTION FOR CEX MODE ===
+                const pairSel = (fmNow.pair || []).map(x => String(x).toUpperCase());
+                const flatForPair = flat.filter(t => (chainsSel.length === 0 || chainsSel.includes(String(t.chain || '').toLowerCase())));
+
+                // Aggregate PAIRDEXS from all selected chains (or all if none selected)
+                const activeChainsForPair = chainsSel.length > 0 ? chainsSel : Object.keys(CONFIG_CHAINS || {});
+                const allPairDefs = {};
+                activeChainsForPair.forEach(ck => {
+                    const pd = (CONFIG_CHAINS[ck] || {}).PAIRDEXS || {};
+                    Object.keys(pd).forEach(p => { allPairDefs[p] = true; });
+                });
+                if (!allPairDefs['NON']) allPairDefs['NON'] = true;
+
+                // Count tokens per pair
+                const byPair = {};
+                flatForPair.forEach(t => {
+                    const chainCfg = CONFIG_CHAINS[(t.chain || '').toLowerCase()] || {};
+                    const pd = chainCfg.PAIRDEXS || {};
+                    const p = String(t.symbol_out || '').toUpperCase().trim();
+                    const key = pd[p] ? p : 'NON';
+                    byPair[key] = (byPair[key] || 0) + 1;
+                });
+
+                const $pairSection = $('<div style="margin-bottom:15px;"></div>');
+                $pairSection.append($('<div style="font-weight:700; color:#333; margin-bottom:8px; font-size:12px; border-bottom:2px solid #e5e5e5; padding-bottom:4px;">PAIR</div>'));
+                const $pairGrid = $('<div style="display:flex; flex-wrap:wrap; gap:6px;"></div>');
+                Object.keys(allPairDefs).forEach(p => {
+                    const cnt = byPair[p] || 0;
+                    if (cnt === 0) return;
+                    const checked = pairSel.includes(p);
+                    const pairColor = (p === 'NON') ? '#6b7280' : accentColor;
+                    const id = `modal-fc-pair-${p}`;
+                    $pairGrid.append($(`
+                        <label class="fc-pair" data-val="${p}" data-color="${pairColor}" for="${id}" style="display:flex; align-items:center; gap:3px; padding:3px 8px; border-radius:3px; cursor:pointer; border:2px solid ${checked ? pairColor : 'transparent'}; background:${checked ? '#f8f8f8' : 'white'};">
+                            <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} style="width:11px; height:11px; margin:0;">
+                            <span style="font-weight:600; font-size:10px; color:${pairColor};">${p}</span>
+                            <span style="font-size:9px; opacity:0.7; color:#555;">[${cnt}]</span>
+                        </label>
+                    `));
+                });
+                $pairSection.append($pairGrid);
+
+                // === 2-COLUMN LAYOUT: Column 1 (CHAIN + PAIR) | Column 2 (DEX) ===
+                const $grid = $('<div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;"></div>');
+                const $col1 = $('<div></div>');
+                $col1.append($chainSection);
+                $col1.append($pairSection);
+                const $col2 = $('<div></div>');
+                $col2.append($dexSection);
+                $grid.append($col1).append($col2);
+                $wrap.append($grid);
+            } else {
+                // Normal Multichain Mode: stacked layout (CHAIN → EXCHANGER → DEX)
+                $wrap.append($chainSection);
+
+                const $cexSection = $('<div style="margin-bottom:15px;"></div>');
+                $cexSection.append($('<div style="font-weight:700; color:#333; margin-bottom:8px; font-size:12px; border-bottom:2px solid #e5e5e5; padding-bottom:4px;">EXCHANGER</div>'));
+                const $cexGrid = $('<div style="display:flex; flex-wrap:wrap; gap:6px;"></div>');
+                getEnabledCEXs().forEach(cx => {
+                    const id = `modal-fc-cex-${cx}`; const cnt = byCex[cx] || 0; if (cnt === 0) return; const checked = cexSel.includes(cx.toUpperCase());
+                    const col = CONFIG_CEX[cx].WARNA || '#333';
+                    $cexGrid.append($(`
+                        <label class="fc-cex" data-val="${cx}" data-color="${col}" for="${id}" style="display:flex; align-items:center; gap:3px; padding:3px 8px; border-radius:3px; cursor:pointer; border:2px solid ${checked ? col : 'transparent'}; background:${checked ? '#f8f8f8' : 'white'};">
+                            <input type="checkbox" id="${id}" ${checked ? 'checked' : ''} style="width:11px; height:11px; margin:0;">
+                            <span style="font-weight:600; font-size:10px; color:${col};">${cx}</span>
+                            <span style="font-size:9px; opacity:0.7; color:#555;">[${cnt}]</span>
+                        </label>
+                    `));
+                });
+                $cexSection.append($cexGrid);
+                $wrap.append($cexSection);
+                $wrap.append($dexSection);
+            }
+
+            const savedFilterKey = isCEXModeNow ? `FILTER_CEX_${window.CEXModeManager.getSelectedCEX()}` : 'FILTER_MULTICHAIN';
+            const saved = getFromLocalStorage(savedFilterKey, null);
             let total = 0;
             if (!saved) {
                 total = flat.length;
+            } else if (isCEXModeNow) {
+                // CEX mode: chain + pair + dex filter
+                const pairSelTotal = (fmNow.pair || []).map(x => String(x).toUpperCase());
+                let totalFiltered = flat;
+                if (chainsSel.length > 0) totalFiltered = totalFiltered.filter(t => chainsSel.includes(String(t.chain || '').toLowerCase()));
+                if (pairSelTotal.length > 0) {
+                    totalFiltered = totalFiltered.filter(t => {
+                        const chainCfg = CONFIG_CHAINS[(t.chain || '').toLowerCase()] || {};
+                        const pd = chainCfg.PAIRDEXS || {};
+                        const p = String(t.symbol_out || '').toUpperCase().trim();
+                        const mapped = pd[p] ? p : 'NON';
+                        return pairSelTotal.includes(mapped);
+                    });
+                }
+                if (dexSel.length > 0) totalFiltered = totalFiltered.filter(t => (t.dexs || []).some(d => dexSel.includes(String(d.dex || '').toLowerCase())));
+                total = (chainsSel.length > 0 && pairSelTotal.length > 0 && dexSel.length > 0) ? totalFiltered.length : 0;
             } else if (chainsSel.length > 0 && cexSel.length > 0 && ((fmNow.dex || []).length > 0)) {
                 total = flat.filter(t => chainsSel.includes(String(t.chain || '').toLowerCase()))
                     .filter(t => cexSel.includes(String(t.cex || '').toUpperCase()))
@@ -1746,22 +1929,32 @@ async function deferredInit() {
             // Insert only summary badge (no search input in modal)
             $('#modal-summary-bar').empty().append($sum);
 
-            $('#modal-filter-sections').off('change.multif').on('change.multif', 'label.fc-chain input, label.fc-cex input, label.fc-dex input', function () {
-                const prev = getFilterMulti();
+            $('#modal-filter-sections').off('change.multif').on('change.multif', 'label.fc-chain input, label.fc-cex input, label.fc-pair input, label.fc-dex input', function () {
+                const prev = isCEXModeNow ? (typeof getFilterCEX === 'function' ? getFilterCEX(window.CEXModeManager.getSelectedCEX()) : {}) : getFilterMulti();
                 const prevChains = (prev.chains || []).map(s => String(s).toLowerCase());
                 const prevCex = (prev.cex || []).map(s => String(s).toUpperCase());
+                const prevPair = (prev.pair || []).map(s => String(s).toUpperCase());
                 const prevDex = (prev.dex || []).map(s => String(s).toLowerCase());
 
                 const chains = $('#modal-filter-sections').find('label.fc-chain input:checked').map(function () { return $(this).closest('label').attr('data-val').toLowerCase(); }).get();
                 const cex = $('#modal-filter-sections').find('label.fc-cex input:checked').map(function () { return $(this).closest('label').attr('data-val').toUpperCase(); }).get();
+                const pair = $('#modal-filter-sections').find('label.fc-pair input:checked').map(function () { return $(this).closest('label').attr('data-val').toUpperCase(); }).get();
                 const dex = $('#modal-filter-sections').find('label.fc-dex input:checked').map(function () { return $(this).closest('label').attr('data-val').toLowerCase(); }).get();
 
-                setFilterMulti({ chains, cex, dex });
+                // Simpan ke per-CEX filter jika dalam CEX mode
+                if (isCEXModeNow && typeof setFilterCEX === 'function') {
+                    const activeCEX = window.CEXModeManager.getSelectedCEX();
+                    setFilterCEX(activeCEX, { chains, pair, dex });
+                } else {
+                    setFilterMulti({ chains, cex, dex });
+                }
 
                 const addChains = chains.filter(x => !prevChains.includes(x)).map(x => x.toUpperCase());
                 const delChains = prevChains.filter(x => !chains.includes(x)).map(x => x.toUpperCase());
                 const addCex = cex.filter(x => !prevCex.includes(x));
                 const delCex = prevCex.filter(x => !cex.includes(x));
+                const addPair = pair.filter(x => !prevPair.includes(x));
+                const delPair = prevPair.filter(x => !pair.includes(x));
                 const addDex = dex.filter(x => !prevDex.includes(x)).map(x => x.toUpperCase());
                 const delDex = prevDex.filter(x => !dex.includes(x)).map(x => x.toUpperCase());
                 const parts = [];
@@ -1769,9 +1962,11 @@ async function deferredInit() {
                 if (delChains.length) parts.push(`-CHAIN: ${delChains.join(', ')}`);
                 if (addCex.length) parts.push(`+CEX: ${addCex.join(', ')}`);
                 if (delCex.length) parts.push(`-CEX: ${delCex.join(', ')}`);
+                if (addPair.length) parts.push(`+PAIR: ${addPair.join(', ')}`);
+                if (delPair.length) parts.push(`-PAIR: ${delPair.join(', ')}`);
                 if (addDex.length) parts.push(`+DEX: ${addDex.join(', ')}`);
                 if (delDex.length) parts.push(`-DEX: ${delDex.join(', ')}`);
-                const msg = parts.length ? parts.join(' | ') : `Filter MULTI diperbarui: CHAIN=${chains.length}, CEX=${cex.length}`;
+                const msg = parts.length ? parts.join(' | ') : `Filter diperbarui: CHAIN=${chains.length}, PAIR=${pair.length}, DEX=${dex.length}`;
                 try { if (typeof toast !== 'undefined' && toast.info) toast.info(msg); } catch (_) { }
 
                 try { if (typeof window.clearSignalCards === 'function') window.clearSignalCards(); } catch (_) { }
@@ -1801,6 +1996,28 @@ async function deferredInit() {
             // === NEW LAYOUT: ROW 1 (EXCHANGER | PAIR), ROW 2 (DEX horizontal) ===
             const $container = $('<div style="font-size:11px; padding:10px;"></div>');
 
+            // ✅ CEX MODE: Check if in Per-CEX mode
+            const isCEXMode = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+
+            if (isCEXMode) {
+                // Show CEX mode banner instead of filter
+                const currentCEX = window.CEXModeManager.getSelectedCEX();
+                const cexConfig = window.CONFIG_CEX?.[currentCEX];
+                const color = cexConfig?.WARNA || '#1448ce';
+
+                // const $banner = $(`
+                //     <div class="uk-alert uk-alert-primary" style="border-left: 4px solid ${color}; background: rgba(${parseInt(color.slice(1, 3), 16)}, ${parseInt(color.slice(3, 5), 16)}, ${parseInt(color.slice(5, 7), 16)}, 0.1); padding: 10px; margin-bottom: 15px;">
+                //         <strong style="color: ${color};">Mode Per CEX Aktif:</strong> 
+                //         <span class="uk-badge" style="background: ${color}; color: #fff; padding: 2px 8px;">${currentCEX}</span>
+                //         <br>
+                //         <span class="uk-text-small uk-text-muted">Filter CEX otomatis diterapkan. Hanya Chain, Pair, dan DEX yang dapat diubah.</span>
+                //     </div>
+                // `);
+                // $container.append($banner);
+
+                console.log('[FILTER] CEX Mode active (single chain) - hiding Exchanger section');
+            }
+
             // Row 1: EXCHANGER dan PAIR side by side
             const $topRow = $('<div style="display:grid; grid-template-columns: 1fr 1fr; gap:30px; margin-bottom:20px;"></div>');
 
@@ -1814,36 +2031,38 @@ async function deferredInit() {
                 pairByCex[cex][pairKey] = (pairByCex[cex][pairKey] || 0) + 1;
             });
 
-            // Column 1: EXCHANGER
-            const $cexCol = $('<div></div>');
-            $cexCol.append($('<div style="font-weight:700; color:#333; margin-bottom:10px; font-size:13px; border-bottom:2px solid #e5e5e5; padding-bottom:6px;">EXCHANGER</div>'));
-            const $cexList = $('<div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;"></div>');
-            let relevantCexs = (CONFIG_CHAINS[chain] && CONFIG_CHAINS[chain].WALLET_CEX) ? Object.keys(CONFIG_CHAINS[chain].WALLET_CEX) : [];
-            const enabledCexList = (typeof getEnabledCEXs === 'function') ? getEnabledCEXs() : [];
-            if (enabledCexList.length > 0) {
-                relevantCexs = relevantCexs.filter(cx => enabledCexList.includes(cx.toUpperCase()));
-            }
-            relevantCexs.forEach(cx => {
-                const cexCnt = byCex[cx] || 0;
-                if (cexCnt === 0) return;
-                const cexChecked = cexSel.includes(cx);
-                const cexColor = (CONFIG_CEX[cx] || {}).WARNA || '#333';
-                const cexId = `modal-sc-cex-${cx}`;
-                const cexPairs = Object.keys(pairByCex[cx] || {}).join('/') || '-';
+            // Column 1: EXCHANGER (only show if NOT in CEX mode)
+            if (!isCEXMode) {
+                const $cexCol = $('<div></div>');
+                $cexCol.append($('<div style="font-weight:700; color:#333; margin-bottom:10px; font-size:13px; border-bottom:2px solid #e5e5e5; padding-bottom:6px;">EXCHANGER</div>'));
+                const $cexList = $('<div style="display:flex; flex-direction:column; gap:4px; align-items:flex-start;"></div>');
+                let relevantCexs = (CONFIG_CHAINS[chain] && CONFIG_CHAINS[chain].WALLET_CEX) ? Object.keys(CONFIG_CHAINS[chain].WALLET_CEX) : [];
+                const enabledCexList = (typeof getEnabledCEXs === 'function') ? getEnabledCEXs() : [];
+                if (enabledCexList.length > 0) {
+                    relevantCexs = relevantCexs.filter(cx => enabledCexList.includes(cx.toUpperCase()));
+                }
+                relevantCexs.forEach(cx => {
+                    const cexCnt = byCex[cx] || 0;
+                    if (cexCnt === 0) return;
+                    const cexChecked = cexSel.includes(cx);
+                    const cexColor = (CONFIG_CEX[cx] || {}).WARNA || '#333';
+                    const cexId = `modal-sc-cex-${cx}`;
+                    const cexPairs = Object.keys(pairByCex[cx] || {}).join('/') || '-';
 
-                $cexList.append($(`
-                    <div style="display:flex; align-items:center; gap:4px;">
-                        <label class="sc-cex" data-val="${cx}" data-color="${cexColor}" for="${cexId}" style="display:flex; align-items:center; gap:3px; padding:2px 6px; border-radius:3px; cursor:pointer; border:2px solid ${cexChecked ? cexColor : 'transparent'}; background:${cexChecked ? '#f8f8f8' : 'white'};">
-                            <input type="checkbox" id="${cexId}" ${cexChecked ? 'checked' : ''} style="width:11px; height:11px; margin:0;">
-                            <span style="font-weight:600; font-size:10px; color:${cexColor};">${cx}</span>
-                            <span style="font-size:9px; opacity:0.7; color:#555;">[${cexCnt}]</span>
-                        </label>
-                        <span style="font-size:9px; color:#888; font-style:italic;">${cexPairs}</span>
-                    </div>
-                `));
-            });
-            $cexCol.append($cexList);
-            $topRow.append($cexCol);
+                    $cexList.append($(`
+                        <div style="display:flex; align-items:center; gap:4px;">
+                            <label class="sc-cex" data-val="${cx}" data-color="${cexColor}" for="${cexId}" style="display:flex; align-items:center; gap:3px; padding:2px 6px; border-radius:3px; cursor:pointer; border:2px solid ${cexChecked ? cexColor : 'transparent'}; background:${cexChecked ? '#f8f8f8' : 'white'};">
+                                <input type="checkbox" id="${cexId}" ${cexChecked ? 'checked' : ''} style="width:11px; height:11px; margin:0;">
+                                <span style="font-weight:600; font-size:10px; color:${cexColor};">${cx}</span>
+                                <span style="font-size:9px; opacity:0.7; color:#555;">[${cexCnt}]</span>
+                            </label>
+                            <span style="font-size:9px; color:#888; font-style:italic;">${cexPairs}</span>
+                        </div>
+                    `));
+                });
+                $cexCol.append($cexList);
+                $topRow.append($cexCol);
+            }
 
             // Column 2: PAIR
             const $pairCol = $('<div></div>');
@@ -2057,6 +2276,9 @@ async function deferredInit() {
                 const key = `FILTER_${String(mode.chain).toUpperCase()}`;
                 const obj = getFromLocalStorage(key, {}) || {};
                 if (obj && (obj.sort === 'A' || obj.sort === 'Z')) pref = obj.sort;
+            } else if (window.CEXModeManager && window.CEXModeManager.isCEXMode() && typeof getFilterCEX === 'function') {
+                const cexFilter = getFilterCEX(window.CEXModeManager.getSelectedCEX());
+                if (cexFilter.sort === 'A' || cexFilter.sort === 'Z') pref = cexFilter.sort;
             } else {
                 const obj = getFromLocalStorage('FILTER_MULTICHAIN', {}) || {};
                 if (obj && (obj.sort === 'A' || obj.sort === 'Z')) pref = obj.sort;
@@ -2071,6 +2293,8 @@ async function deferredInit() {
         } catch (_) { }
     }
     try { applySortToggleState(); } catch (_) { }
+    // Expose untuk dipanggil ulang dari CEX mode init
+    window.applySortToggleState = applySortToggleState;
 
     // Auto-switch to single-chain view if URL indicates per-chain mode
     (function autoOpenSingleChainIfNeeded() {
@@ -4929,6 +5153,15 @@ $(document).ready(function () {
         if ($wrap.length === 0) return;
         $wrap.empty();
 
+        // Robot icon: only active when multichain mode (chain=all) and no CEX mode
+        const isCEXActive = window.CEXModeManager && window.CEXModeManager.isCEXMode();
+        const isMultichain = (!activeKey || activeKey === 'all');
+        if (isMultichain && !isCEXActive) {
+            $('#multichain_scanner').addClass('active-mode');
+        } else {
+            $('#multichain_scanner').removeClass('active-mode');
+        }
+
         // ✅ Get enabled chains (only show icons for active chains)
         const enabledChains = (typeof getEnabledChains === 'function')
             ? getEnabledChains()
@@ -4944,24 +5177,24 @@ $(document).ready(function () {
 
             const chain = CONFIG_CHAINS[chainKey] || {};
             const isActive = String(activeKey).toLowerCase() === String(chainKey).toLowerCase();
-            const style = isActive ? 'width:30px' : '';
-            const width = isActive ? 30 : 24;
             const icon = chain.ICON || '';
             const name = chain.Nama_Chain || chainKey.toUpperCase();
+            const chainColor = chain.WARNA || '#2563eb';
+            const activeClass = isActive ? 'active' : '';
+            const activeStyle = isActive
+                ? `--icon-color: ${chainColor}; --icon-shadow: ${chainColor}40;`
+                : '';
             // Determine running state for this chain
             let running = false;
             try {
                 const f = getFromLocalStorage(`FILTER_${String(chainKey).toUpperCase()}`, {}) || {};
                 running = String(f.run || 'NO').toUpperCase() === 'YES';
             } catch (_) { }
-            // Do not apply ring or enlargement; small dot indicator handled elsewhere
-            const ring = '';
             const linkHTML = `
-                <span class="chain-link icon" data-chain="${chainKey}" style="display:inline-block; ${style} margin-right:4px;">
-                    <a href="${currentPage}?chain=${encodeURIComponent(chainKey)}" title="SCANNER ${name.toUpperCase()}">
-                        <img src="${icon}" alt="${name} icon" width="${width}" style="${ring}">
-                    </a>
-                </span>`;
+                <a href="${currentPage}?chain=${encodeURIComponent(chainKey)}" class="chain-link ${activeClass}" data-chain="${chainKey}"
+                   style="${activeStyle}" title="SCANNER ${name.toUpperCase()}">
+                    <img class="icon" src="${icon}" alt="${name} icon" width="24" />
+                </a>`;
             $wrap.append(linkHTML);
         });
         try { updateToolbarRunIndicators(); } catch (_) { }
@@ -6137,11 +6370,11 @@ $(document).on('click', '#histClearAll', async function () {
     // ✅ REFACTORED: Now using IndexedDB helpers from storage.js
     // Storage key format: MODAL_PROFILE_{CHAIN} (singular, not plural)
 
-    // Save last selected profile index for a chain (temporary cache, not critical data)
+    // Save last selected profile index for a chain
     async function saveLastProfileIndex(chainKey, index) {
         try {
             const storageKey = `MODAL_LAST_PROFILE_${String(chainKey || '').toUpperCase()}`;
-            localStorage.setItem(storageKey, String(index));
+            saveToLocalStorage(storageKey, index);
             console.log(`[Bulk Modal] Saved last profile index ${index} for chain: ${chainKey}`);
         } catch (e) {
             console.error('[Bulk Modal] Error saving last profile index:', e);
@@ -6152,7 +6385,7 @@ $(document).on('click', '#histClearAll', async function () {
     async function loadLastProfileIndex(chainKey) {
         try {
             const storageKey = `MODAL_LAST_PROFILE_${String(chainKey || '').toUpperCase()}`;
-            const stored = localStorage.getItem(storageKey);
+            const stored = getFromLocalStorage(storageKey, null);
             return stored !== null ? parseInt(stored) : null;
         } catch (e) {
             console.error('[Bulk Modal] Error loading last profile index:', e);

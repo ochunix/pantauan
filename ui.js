@@ -210,13 +210,21 @@ function RenderCardSignal() {
     sinyalContainer.setAttribute('uk-grid', '');
     sinyalContainer.className = 'uk-grid uk-grid-small uk-grid-match';
 
-    // Warna header sesuai chain
+    // Warna header sesuai mode (CEX atau chain)
     let chainColor = '#5c9514';
     try {
-        const m = (typeof getAppMode === 'function') ? getAppMode() : { type: 'multi' };
-        if (m.type === 'single') {
-            const cfg = (window.CONFIG_CHAINS || {})[m.chain] || {};
-            if (cfg.WARNA) chainColor = cfg.WARNA;
+        // Check if CEX mode is active
+        if (window.CEXModeManager && window.CEXModeManager.active && window.CEXModeManager.selectedCEX) {
+            const cexTheme = window.CEXModeManager.getTheme(window.CEXModeManager.selectedCEX);
+            if (cexTheme && cexTheme.color) {
+                chainColor = cexTheme.color;
+            }
+        } else {
+            const m = (typeof getAppMode === 'function') ? getAppMode() : { type: 'multi' };
+            if (m.type === 'single') {
+                const cfg = (window.CONFIG_CHAINS || {})[m.chain] || {};
+                if (cfg.WARNA) chainColor = cfg.WARNA;
+            }
         }
     } catch (_) { }
 
@@ -334,10 +342,18 @@ window.updateSignalTheme = function () {
         }
 
         let chainColor = '#5c9514';
-        const m = (typeof getAppMode === 'function') ? getAppMode() : { type: 'multi' };
-        if (m.type === 'single') {
-            const cfg = (window.CONFIG_CHAINS || {})[m.chain] || {};
-            if (cfg.WARNA) chainColor = cfg.WARNA;
+        // Check if CEX mode is active first
+        if (window.CEXModeManager && window.CEXModeManager.active && window.CEXModeManager.selectedCEX) {
+            const cexTheme = window.CEXModeManager.getTheme(window.CEXModeManager.selectedCEX);
+            if (cexTheme && cexTheme.color) {
+                chainColor = cexTheme.color;
+            }
+        } else {
+            const m = (typeof getAppMode === 'function') ? getAppMode() : { type: 'multi' };
+            if (m.type === 'single') {
+                const cfg = (window.CONFIG_CHAINS || {})[m.chain] || {};
+                if (cfg.WARNA) chainColor = cfg.WARNA;
+            }
         }
         const container = document.getElementById('sinyal-container');
         if (!container) return;

@@ -74,8 +74,8 @@ function getCEXCredentials(cexName) {
  */
 function migrateCEXKeysToIndexedDB() {
     try {
-        const migrationDone = localStorage.getItem('CEX_KEYS_MIGRATED');
-        if (migrationDone === 'true') {
+        const migrationDone = getFromLocalStorage('CEX_KEYS_MIGRATED', false);
+        if (migrationDone === true || migrationDone === 'true') {
             try { if (window.SCAN_LOG_ENABLED) console.log('[CEX Migration] Migration already completed, skipping'); } catch (_) { }
             return;
         }
@@ -88,7 +88,7 @@ function migrateCEXKeysToIndexedDB() {
                 if (typeof rawExisting === 'string') existingKeys = appDecrypt(rawExisting);
                 if (existingKeys && typeof existingKeys === 'object' && Object.keys(existingKeys).length > 0) {
                     try { if (window.SCAN_LOG_ENABLED) console.log('[CEX Migration] IndexedDB already has keys, skipping migration'); } catch (_) { }
-                    localStorage.setItem('CEX_KEYS_MIGRATED', 'true');
+                    saveToLocalStorage('CEX_KEYS_MIGRATED', true);
                     return;
                 }
             }
@@ -100,9 +100,10 @@ function migrateCEXKeysToIndexedDB() {
         let migratedCount = 0;
 
         cexList.forEach(cex => {
-            const apiKey = localStorage.getItem(`MULTI_apikey${cex}`);
-            const secretKey = localStorage.getItem(`MULTI_secretkey${cex}`);
-            const passphrase = localStorage.getItem(`MULTI_passphrase${cex}`);
+            // Cek legacy localStorage dulu (migrasi dari raw localStorage)
+            const apiKey = (typeof localStorage !== 'undefined') ? localStorage.getItem(`MULTI_apikey${cex}`) : null;
+            const secretKey = (typeof localStorage !== 'undefined') ? localStorage.getItem(`MULTI_secretkey${cex}`) : null;
+            const passphrase = (typeof localStorage !== 'undefined') ? localStorage.getItem(`MULTI_passphrase${cex}`) : null;
 
             if (apiKey && secretKey) {
                 migratedKeys[cex] = {
@@ -119,11 +120,23 @@ function migrateCEXKeysToIndexedDB() {
         if (migratedCount > 0 && typeof saveToLocalStorage === 'function') {
             const encrypted = appEncrypt(migratedKeys);
             saveToLocalStorage('CEX_API_KEYS', encrypted || migratedKeys);
-            localStorage.setItem('CEX_KEYS_MIGRATED', 'true');
+            saveToLocalStorage('CEX_KEYS_MIGRATED', true);
             try { if (window.SCAN_LOG_ENABLED) console.log(`[CEX Migration] Migrated ${migratedCount} CEX API key(s) to IndexedDB:`, Object.keys(migratedKeys)); } catch (_) { }
+
+            // Cleanup legacy localStorage keys setelah migrasi berhasil
+            try {
+                cexList.forEach(cex => {
+                    localStorage.removeItem(`MULTI_apikey${cex}`);
+                    localStorage.removeItem(`MULTI_secretkey${cex}`);
+                    localStorage.removeItem(`MULTI_passphrase${cex}`);
+                });
+                localStorage.removeItem('CEX_KEYS_MIGRATED'); // hapus flag lama di localStorage
+                console.log('[CEX Migration] Legacy localStorage keys cleaned up');
+            } catch (_) { }
         } else {
             try { if (window.SCAN_LOG_ENABLED) console.log('[CEX Migration] No legacy API keys found to migrate'); } catch (_) { }
-            localStorage.setItem('CEX_KEYS_MIGRATED', 'true');
+            saveToLocalStorage('CEX_KEYS_MIGRATED', true);
+            try { localStorage.removeItem('CEX_KEYS_MIGRATED'); } catch (_) { } // hapus flag lama
         }
     } catch (error) {
         console.error('[CEX Migration] Migration failed:', error);

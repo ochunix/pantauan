@@ -929,12 +929,9 @@
             try {
                 // Try to get from localStorage/indexedDB
                 if (typeof window !== 'undefined') {
-                    // Try window.getFromLocalStorage first (if available)
+                    // Load dari IndexedDB (via getFromLocalStorage with cache)
                     if (typeof window.getFromLocalStorage === 'function') {
                         tokenDatabase = window.getFromLocalStorage(tokenDbKey, []);
-                    } else if (typeof localStorage !== 'undefined') {
-                        const raw = localStorage.getItem(tokenDbKey);
-                        tokenDatabase = raw ? JSON.parse(raw) : [];
                     }
                 }
             } catch (err) {
@@ -2421,6 +2418,35 @@
 
                 // Convert map back to array
                 mergedTokens = Array.from(tokenMap.values());
+
+                // ========== ENRICHMENT: CEX LISTINGS (CROSS-CEX) ==========
+                // Group tokens by unique identifier (Symbol + SC) to find all CEX listings
+                const tokenGroups = new Map();
+                mergedTokens.forEach(token => {
+                    // Use Symbol + SC as unique ID for the token asset
+                    const uniqueId = `${String(token.symbol_in).toUpperCase()}_${String(token.sc_in || '').toLowerCase()}`;
+                    if (!tokenGroups.has(uniqueId)) {
+                        tokenGroups.set(uniqueId, []);
+                    }
+                    tokenGroups.get(uniqueId).push(token);
+                });
+
+                // Calculate and apply cexListings for each group
+                tokenGroups.forEach(groupTokens => {
+                    // 1. Collect all CEXs where this token is listed
+                    const listings = {};
+                    groupTokens.forEach(t => {
+                        if (t.cex) listings[String(t.cex).toUpperCase()] = true;
+                        // Merge existing listings if any
+                        if (t.cexListings) Object.assign(listings, t.cexListings);
+                    });
+
+                    // 2. Apply combined listings to ALL tokens in the group
+                    groupTokens.forEach(t => {
+                        t.cexListings = { ...listings };
+                    });
+                });
+                // ==========================================================
 
                 if (window.SnapshotOverlay) {
                     window.SnapshotOverlay.updateProgress(
