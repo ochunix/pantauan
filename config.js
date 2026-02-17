@@ -1,7 +1,7 @@
 const CONFIG_APP = {
     APP: {
         NAME: "APP_PANTAUAN",
-        VERSION: "2026.02.17",
+        VERSION: "2026.02.18",
         SCAN_LIMIT: false,
         AUTORUN: true,
         AUTO_VOLUME: true,   // Set false untuk menyembunyikan & menonaktifkan fitur auto volume

@@ -2360,6 +2360,15 @@ async function deferredInit() {
                 obj.sort = pref;
                 saveToLocalStorage(key, obj);
                 loadAndDisplaySingleChainTokens(); // will re-apply sorting and update window.singleChainTokensCurrent
+            } else if (mode.type === 'cex' && typeof setFilterCEX === 'function') {
+                // CEX mode: save sort to FILTER_CEX_{cexName}
+                const cexName = mode.cex || (window.CEXModeManager ? window.CEXModeManager.getSelectedCEX() : '');
+                if (cexName) {
+                    const cexFilter = (typeof getFilterCEX === 'function') ? getFilterCEX(cexName) : {};
+                    cexFilter.sort = pref;
+                    setFilterCEX(cexName, cexFilter);
+                }
+                refreshTokensTable();
             } else {
                 const key = 'FILTER_MULTICHAIN';
                 const obj = getFromLocalStorage(key, {}) || {};
@@ -4876,15 +4885,40 @@ $(document).ready(function () {
             try { if (typeof window.updateRunningChainsBanner === 'function') window.updateRunningChainsBanner(); } catch (_) { }
             $('#stopSCAN').show().prop('disabled', false);
             $('#reload').prop('disabled', false);
-            //$('#infoAPP').html('⚠️ Proses sebelumnya tidak selesai. Tekan tombol <b>RESET PROSES</b> untuk memulai ulang.').show();
 
             try { if (typeof setScanUIGating === 'function') setScanUIGating(true); } catch (_) { }
         } else {
-            $('#startSCAN').prop('disabled', false).removeAttr('aria-busy').text('Start').removeClass('uk-button-disabled');
-            $('#stopSCAN').hide();
-            // Clear banner when not running
-            try { $('#infoAPP').text('').hide(); } catch (_) { }
-            try { if (typeof setScanUIGating === 'function') setScanUIGating(false); } catch (_) { }
+            // When SCAN_LIMIT is true, check if another mode is running globally
+            let lockedByOther = false;
+            let lockMode = '';
+            try {
+                const scanLimitEnabled = window.CONFIG_APP && window.CONFIG_APP.APP && window.CONFIG_APP.APP.SCAN_LIMIT === true;
+                if (scanLimitEnabled && typeof getGlobalScanLock === 'function') {
+                    const lock = getGlobalScanLock();
+                    if (lock) {
+                        // Check if lock is from a DIFFERENT mode than current
+                        const activeKey = (typeof getActiveFilterKey === 'function') ? getActiveFilterKey() : '';
+                        if (lock.key !== activeKey) {
+                            lockedByOther = true;
+                            lockMode = lock.mode || 'UNKNOWN';
+                        }
+                    }
+                }
+            } catch (_) { }
+
+            if (lockedByOther) {
+                // Another mode is scanning - disable Start but don't show Stop
+                $('#startSCAN').prop('disabled', true).removeAttr('aria-busy').text(`Locked (${lockMode})`).addClass('uk-button-disabled');
+                $('#stopSCAN').hide();
+                try { $('#infoAPP').text(`⚠️ Scan sedang berjalan di mode ${lockMode}`).show(); } catch (_) { }
+                try { if (typeof setScanUIGating === 'function') setScanUIGating(true); } catch (_) { }
+            } else {
+                $('#startSCAN').prop('disabled', false).removeAttr('aria-busy').text('Start').removeClass('uk-button-disabled');
+                $('#stopSCAN').hide();
+                // Clear banner when not running
+                try { $('#infoAPP').text('').hide(); } catch (_) { }
+                try { if (typeof setScanUIGating === 'function') setScanUIGating(false); } catch (_) { }
+            }
         }
     }
 
@@ -4974,6 +5008,15 @@ $(document).ready(function () {
                     // Refresh toolbar indicators and running banner for ANY filter change
                     try { if (typeof window.updateRunningChainsBanner === 'function') window.updateRunningChainsBanner(); } catch (_) { }
                     try { if (typeof window.updateToolbarRunIndicators === 'function') window.updateToolbarRunIndicators(); } catch (_) { }
+
+                    // When SCAN_LIMIT is enabled, re-evaluate Start button on ANY filter run change
+                    try {
+                        const scanLimitOn = window.CONFIG_APP && window.CONFIG_APP.APP && window.CONFIG_APP.APP.SCAN_LIMIT === true;
+                        if (scanLimitOn && msg.val && Object.prototype.hasOwnProperty.call(msg.val, 'run')) {
+                            const currentSt = getAppState();
+                            applyRunUI(currentSt && currentSt.run === 'YES');
+                        }
+                    } catch (_) { }
 
                     // If this update is for the ACTIVE filter key, also apply run/theme locally
                     const activeKey = (typeof getActiveFilterKey === 'function') ? getActiveFilterKey() : 'FILTER_MULTICHAIN';
