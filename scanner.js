@@ -301,7 +301,7 @@ async function startScanner(tokensToScan, settings, tableBodyId) {
                     timeout: 8000
                 });
             } else if (typeof toast !== 'undefined' && toast.error) {
-                toast.error('⚠️ MATCHA API KEYS WAJIB DIISI! Tambahkan di Settings.', { duration: 5000 });
+                toast.error('⚠️ MATCHA API KEYS WAJIB DIISI! Tambahkan di Settings.', null, { duration: 5000 });
             }
 
             console.error('[SCANNER] ⚠️ Cannot start scan - No Matcha API keys configured!');
@@ -762,7 +762,7 @@ async function startScanner(tokensToScan, settings, tableBodyId) {
             // (scan DEX tidak akan dilakukan jika CEX tidak ada harga)
             if (!cexResult.ok) {
                 if (typeof toast !== 'undefined' && toast.warning) {
-                    toast.warning(`⚠️ CEX ${token.cex} gagal - DEX akan di-skip untuk ${token.symbol_in}`, {
+                    toast.warning(`⚠️ CEX ${token.cex} gagal - DEX akan di-skip untuk ${token.symbol_in}`, null, {
                         duration: 3000
                     });
                 }
@@ -2113,7 +2113,7 @@ async function stopScanner() {
 
         // Show toast notification
         if (typeof toast !== 'undefined' && toast.info) {
-            toast.info('Autorun countdown stopped', { duration: 2000 });
+            toast.info('Autorun countdown stopped', null, { duration: 2000 });
         }
     }
 }

@@ -1,6 +1,6 @@
 const CONFIG_APP = {
     APP: {
-        NAME: "PANTAUAN_TESTER",
+        NAME: "APP_PANTAUAN",
         VERSION: "2026.02.18",
         SCAN_LIMIT: false,
         AUTORUN: true,

@@ -455,13 +455,38 @@ window.clearSignalCards = function () {
 /** Open and populate the 'Edit Koin' modal by token id. */
 function openEditModalById(id) {
     const m = (typeof getAppMode === 'function') ? getAppMode() : { type: 'multi' };
-    const tokens = (m.type === 'single') ? getFromLocalStorage(`TOKEN_${String(m.chain).toUpperCase()}`, [])
-        : getFromLocalStorage('TOKEN_MULTICHAIN', []);
+    let tokens;
+    let tokenSourceChain = null; // Track which chain DB the token was found in (for CEX mode)
+    if (m.type === 'single') {
+        tokens = getFromLocalStorage(`TOKEN_${String(m.chain).toUpperCase()}`, []);
+    } else if (m.type === 'cex') {
+        // CEX mode: search across ALL per-chain databases to find the token
+        tokens = [];
+        const chains = Object.keys(window.CONFIG_CHAINS || {});
+        for (const chainKey of chains) {
+            const chainTokens = (typeof getTokensChain === 'function') ? getTokensChain(chainKey) : [];
+            if (Array.isArray(chainTokens)) {
+                const found = chainTokens.find(t => String(t.id) === String(id));
+                if (found) {
+                    tokens = chainTokens;
+                    tokenSourceChain = chainKey;
+                    break;
+                }
+            }
+        }
+        // Fallback to TOKEN_MULTICHAIN if not found in per-chain
+        if (!tokenSourceChain) tokens = getFromLocalStorage('TOKEN_MULTICHAIN', []);
+    } else {
+        tokens = getFromLocalStorage('TOKEN_MULTICHAIN', []);
+    }
     const token = (Array.isArray(tokens) ? tokens : []).find(t => String(t.id) === String(id));
     if (!token) {
-        // refactor: use toast helper
         if (typeof toast !== 'undefined' && toast.error) toast.error('Data token tidak ditemukan');
         return;
+    }
+    // Store source chain for CEX mode so save handler knows where to persist
+    if (m.type === 'cex' && tokenSourceChain) {
+        token._sourceChain = tokenSourceChain;
     }
 
     $('#multiTokenIndex').val(token.id);
@@ -484,18 +509,28 @@ function openEditModalById(id) {
             const c = String(m.chain).toLowerCase();
             $sel.val(c);
             if (isRunning) {
-                // During per-chain scan: keep inputs editable per request
                 $sel.prop('disabled', false).attr('title', '');
             } else {
                 $sel.prop('disabled', true).attr('title', 'Per-chain mode: Chain terkunci');
             }
             applyEditModalTheme(c);
-            // Show copy-to-multichain button in per-chain mode
             $('#CopyToMultiBtn').show();
+        } else if (m.type === 'cex') {
+            // CEX mode: set chain from token's source chain, keep editable
+            const c = String(token.chain || token._sourceChain || '').toLowerCase();
+            $sel.val(c);
+            $sel.prop('disabled', false).attr('title', '');
+            // Apply CEX theme accent
+            const cexCfg = (window.CONFIG_CEX || {})[m.cex] || {};
+            const cexColor = cexCfg.WARNA || '#333';
+            const $modal = $('#FormEditKoinModal');
+            $modal.find('.uk-modal-dialog').css('border-top', `3px solid ${cexColor}`);
+            $modal.find('#judulmodal').css({ background: cexColor, color: '#fff', borderRadius: '4px' });
+            applyEditModalTheme(c);
+            $('#CopyToMultiBtn').hide();
         } else {
             $sel.prop('disabled', false).attr('title', '');
-            applyEditModalTheme(null); // multi-mode theme
-            // Hide copy-to-multichain in multi mode
+            applyEditModalTheme(null);
             $('#CopyToMultiBtn').hide();
         }
     } catch (_) { }

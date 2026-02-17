@@ -300,11 +300,17 @@
                 try {
                     const q = ($('#searchInput').val() || '').trim().toUpperCase();
                     if (q) {
-                        scanTokens = scanTokens.filter(t => {
-                            const sym = (t.symbol || t.Simbol || '').toUpperCase();
-                            const name = (t.name || t.Nama || '').toUpperCase();
-                            return sym.includes(q) || name.includes(q);
-                        });
+                        // Use pre-filtered scanCandidateTokens if available (set by search UI)
+                        if (Array.isArray(window.scanCandidateTokens) && window.scanCandidateTokens.length > 0) {
+                            scanTokens = window.scanCandidateTokens;
+                        } else {
+                            scanTokens = scanTokens.filter(t => {
+                                const sym = (t.symbol_in || t.symbol || t.Simbol || '').toUpperCase();
+                                const symOut = (t.symbol_out || '').toUpperCase();
+                                const name = (t.name || t.Nama || '').toUpperCase();
+                                return sym.includes(q) || symOut.includes(q) || name.includes(q);
+                            });
+                        }
                     }
                 } catch (_) { }
 

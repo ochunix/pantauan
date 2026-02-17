@@ -1581,7 +1581,7 @@
             );
 
             if (isNetworkError && typeof toast !== 'undefined' && toast.error) {
-                toast.error(`🌐 RPC Error (${chainKey}): ${error.message}`, {
+                toast.error(`🌐 RPC Error (${chainKey}): ${error.message}`, null, {
                     duration: 4000,
                     position: 'bottom-right'
                 });
@@ -1890,7 +1890,7 @@
 
                 // Show warning toast dengan detail
                 if (typeof toast !== 'undefined' && toast.warning) {
-                    toast.warning(warningMsg, {
+                    toast.warning(warningMsg, null, {
                         duration: 10000,
                         position: 'top-center'
                     });
@@ -2107,7 +2107,7 @@
                         ? `⚠️ Batch ${batchNumber}: 1 token gagal validasi (${batchErrorTokens[0]})`
                         : `⚠️ Batch ${batchNumber}: ${batchErrorCount} token gagal validasi (${batchErrorTokens.slice(0, 3).join(', ')}${batchErrorCount > 3 ? '...' : ''})`;
 
-                    toast.warning(errorMsg, {
+                    toast.warning(errorMsg, null, {
                         duration: 4000,
                         position: 'bottom-right'
                     });
@@ -2232,7 +2232,7 @@
                 const warningMsg = `⚠️ ${failedPriceFetchList.length} CEX gagal fetch harga\n\nGagal: ${failedPriceFetchList.join(', ')}\nBerhasil: ${activeCexList.length - failedPriceFetchList.length} CEX\n\nHarga untuk CEX yang gagal akan diset ke 0.`;
 
                 if (typeof toast !== 'undefined' && toast.warning) {
-                    toast.warning(warningMsg, {
+                    toast.warning(warningMsg, null, {
                         duration: 6000,
                         position: 'top-center'
                     });
