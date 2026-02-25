@@ -57,6 +57,13 @@
   },
   {
     "cex": "BINANCE",
+    "nama_token": "Solana",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "BINANCE",
     "nama_token": "ChainGPT",
     "ticker": "CGPT",
     "sc": "CCDfDXZxzZtkZLuhY48gyKdXc5KywqpR8xEVHHh8ck1G",
@@ -575,6 +582,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "Solana",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "MEMDEX100",
     "ticker": "MEMDEX",
     "sc": "83iBDw3ZpxqJ3pEzrbttr9fGA57tttehDAxoFyR1moon",
@@ -873,6 +887,13 @@
     "ticker": "HUHU",
     "sc": "DWJR3zuHpykwGUz2vn3P6e3D3xH7cG3cfa6HHdoSDMEC",
     "decimals": 4
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "Lobstar",
+    "ticker": "LOBSTAR",
+    "sc": "AVF9F4C4j8b1Kh4BmNHqybDaHgnZpJ7W7yLvL7hUpump",
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -1828,6 +1849,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "ZERO",
+    "ticker": "ZEROOLD",
+    "sc": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
+    "decimals": 9
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "Aura",
     "ticker": "AURASOL",
     "sc": "DtR4D9FtVoTX2569gaL837ZgrB6wNjj6tkmnX9Rdk9B2",
@@ -1891,6 +1919,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "AgenC",
+    "ticker": "AGENC",
+    "sc": "5yC9BM8KUsJTPbWPLfA2N8qH1s9V8DQ3Vcw1G6Jdpump",
+    "decimals": 6
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "Brownhouse",
     "ticker": "BROWNHOUSE",
     "sc": "AnR1qNfefHwL8GY7C4iqzBjJZyKzw6Z7N9kXY81bpump",
@@ -1915,6 +1950,13 @@
     "nama_token": "Mumu The Bull",
     "ticker": "MUMU",
     "sc": "5LafQUrVco6o7KMz42eqVEJ9LW31StPyGjeeu5sKoMtA",
+    "decimals": 6
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "One Punch Cat",
+    "ticker": "PUNCHOLD",
+    "sc": "of28WzrGVqVKCC35zjkQBrndCCDzErtzg7cj2mypump",
     "decimals": 6
   },
   {
@@ -2710,6 +2752,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "Mac mini",
+    "ticker": "MACMINI",
+    "sc": "2QKrBtNECja4cJygxA7igwqxahs93GNmuQ2We2stpump",
+    "decimals": 6
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "Exotic Markets",
     "ticker": "EXO",
     "sc": "EXoMAHnw2Gw5fXJTektedLJDVn9vn8tLTEQX7gHccQKR",
@@ -2843,7 +2892,7 @@
   },
   {
     "cex": "MEXC",
-    "nama_token": "WAP",
+    "nama_token": "wap",
     "ticker": "WAP",
     "sc": "Bz7vVzQhm2KMW1XgcrDruYega1MiwrAs1DQysrx4tFkp",
     "decimals": 9
@@ -2979,28 +3028,28 @@
     "nama_token": "Big Pharmai",
     "ticker": "DRUGS",
     "sc": "CX9YDTED9TWgVXVoFy8JL9gSSAEWcTv4mzjLSv17LQsj",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Roadmap Coin",
     "ticker": "RDMP",
     "sc": "1HE8MZKhpbJiNvjJTrXdV395qEmPEqJme6P5DLBboop",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "FalconX",
     "ticker": "FALX",
     "sc": "Afo4NumBNHDXc7m7p6qjZ1pF3LbqYfG5k1CNrGve8rVu",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Repost Dog",
     "ticker": "RDOG",
     "sc": "DUp2qMMGuACziKeyZRtH9cuKyqtYpqJ24iZg6tVLpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -3014,14 +3063,14 @@
     "nama_token": "POKE CASINO",
     "ticker": "POKE",
     "sc": "5UxCP4wR84soYRSS8t32HZc8a9wCJpEnK4xykB8pmCcU",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Coral Protocol",
     "ticker": "CORAL",
     "sc": "CoRAitPvr9seu5F9Hk39vbjqA1o1XuoryHjSk1Z1q2mo",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -3035,14 +3084,21 @@
     "nama_token": "Hibernates",
     "ticker": "HIBER",
     "sc": "FHKiJEg2zmhv9DEeaXMSZa7R4P8BPFX5VTRrzrtJpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Phantasia",
     "ticker": "FANT",
     "sc": "FANTafPFBAt93BNJVpdu25pGPmca3RfwdsDsRrT3LX1r",
-    "decimals": 0
+    "decimals": 6
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "fih",
+    "ticker": "FIH",
+    "sc": "8SkfuQkYNTskoQUbbjr2JbZQeqQV9egnJXgfMXf5bonk",
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -3071,13 +3127,6 @@
     "ticker": "POPE",
     "sc": "9u8PP725K2GUf4p5bhKebrzHTGgvHp6KDeQPf7jc1F1W",
     "decimals": 9
-  },
-  {
-    "cex": "MEXC",
-    "nama_token": "OmegaX Health",
-    "ticker": "OMEGAX",
-    "sc": "FTBq3w9gCv27E451DV6w8AbUjBQbyVxxj1ZaYEYepump",
-    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -3246,13 +3295,6 @@
     "ticker": "STREAM",
     "sc": "STREAMribRwybYpMmSYoCsQUdr6MZNXEqHgm7p1gu9M",
     "decimals": 6
-  },
-  {
-    "cex": "MEXC",
-    "nama_token": "SHIB-BSC",
-    "ticker": "SHIB",
-    "sc": "CiKu4eHsVrc1eueVQeHn7qhXTcVu95gSQmBpX4utjL9z",
-    "decimals": 8
   },
   {
     "cex": "MEXC",
@@ -3490,7 +3532,7 @@
     "nama_token": "Spike",
     "ticker": "SPIKE",
     "sc": "BX9yEgW8WkoWV8SvqTMMCynkQWreRTJ9ZS81dRXYnnR9",
-    "decimals": 6
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -3707,7 +3749,7 @@
     "nama_token": "gAInzy",
     "ticker": "GNZ",
     "sc": "FFgfStKwuF3DSxEeogA69FNkPrkb7XDA5Tw29TBEpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -3728,84 +3770,84 @@
     "nama_token": "Golazo",
     "ticker": "GOL",
     "sc": "9sjyR4GrozeV8a9xM3ykKPGPXJYASy9AuufzefCyaCnP",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Gorbagana",
     "ticker": "GOR",
     "sc": "71Jvq4Epe2FCJ7JFSF7jLXdNk1Wy4Bhqd9iL6bEFELvg",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Markkacy",
     "ticker": "KACY",
     "sc": "6QSVGUEyBZWRshnXKhS96NQ97vGWiTu61SyHLAbYpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Magnet",
     "ticker": "MAGNET",
     "sc": "8iWsK2WH3AGviQwAnt43zvc8yLy6QMUSuv8PK2A7pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Glitter Finance",
     "ticker": "XGLI",
     "sc": "FsPncBfeDV3Uv9g6yyx1NnKidvUeCaAiT2NtBAPy17xg",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Simpson Predictions",
     "ticker": "SIMPSONP",
     "sc": "zzUMiVwLTL4F8LiDjhr2mDL2pmL6Zx4Uie4CLxE6Mkj",
-    "decimals": 0
+    "decimals": 2
   },
   {
     "cex": "MEXC",
     "nama_token": "WHATRR",
     "ticker": "WHATRR",
     "sc": "G95DeH1mNbG48MWsfRx1WXngtUhHvjWE97P4piXZbonk",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Ginnan the Cat",
     "ticker": "GINNAN",
     "sc": "GinNabffZL4fUj9Vactxha74GDAW8kDPGaHqMtMzps2f",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Lumo",
     "ticker": "LUMO",
     "sc": "4FkNq8RcCYg4ZGDWh14scJ7ej3m5vMjYTcWoJVkupump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Black Elon",
     "ticker": "BLKELON",
     "sc": "3HhNZLnz1j2Db9EMAbePqbkVGLaNtFAPRiVfn3WZMnnU",
-    "decimals": 0
+    "decimals": 7
   },
   {
     "cex": "MEXC",
     "nama_token": "hadtotakeprofits sir",
     "ticker": "HTTPS",
     "sc": "7sGdNQSvUGpahh6qyXB3g5gsdK9FAzZM299KyCXspump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Get Shit Done",
     "ticker": "GSD",
     "sc": "8116V1BW9zaXUM6pVhWVaAduKrLcEBi3RGXedKTrBAGS",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -3819,84 +3861,84 @@
     "nama_token": "QUARM",
     "ticker": "QUARM",
     "sc": "2zEgJriivukRSTsmCpGGjn3Kf8SykUixf3M7ct3Hpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "FAFO",
     "ticker": "FAFOOLD",
     "sc": "BP8RUdhLKBL2vgVXc3n7oTSZKWaQVbD8S6QcPaMVBAPo",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "America Dog",
     "ticker": "ADOG",
     "sc": "3HHk7HhDWij6nn7Bz44SyCAV2Mwmjh5gfhKyqUvovp3z",
-    "decimals": 0
+    "decimals": 2
   },
   {
     "cex": "MEXC",
     "nama_token": "SASHA CAT",
     "ticker": "SASHA1",
     "sc": "EtQE3GREPyFBCU3yUXc5nWs3wRtLYuMmtKAFAvXD1yuR",
-    "decimals": 0
+    "decimals": 2
   },
   {
     "cex": "MEXC",
     "nama_token": "Panda Swap",
     "ticker": "PANDA",
     "sc": "PANDA8AgjdgQqRRYedrXGKTb2WygNsAhxNDpD7YrBgv",
-    "decimals": 0
+    "decimals": 3
   },
   {
     "cex": "MEXC",
     "nama_token": "Wojak",
     "ticker": "WOJAKSOL",
     "sc": "H3XMGj72YCNPSjZm82NFE5eYUQHckemqpUidVrJP3787",
-    "decimals": 0
+    "decimals": 2
   },
   {
     "cex": "MEXC",
     "nama_token": "Pandu Pandas",
     "ticker": "PANDU",
     "sc": "4NGbC4RRrUjS78ooSN53Up7gSg4dGrj6F6dxpMWHbonk",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "wrapped dog",
     "ticker": "WDOG",
     "sc": "GYKmdfcUmZVrqfcH1g579BGjuzSRijj3LBuwv79rpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "AMERICA PARTY",
     "ticker": "APSOL",
     "sc": "39zSVsSHFqNhARbVh6n8ZF78nCmhV3gSg8D39xhBNe73",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "MANA",
     "ticker": "MANASOL",
     "sc": "Bw5K8eZaf361uDLHgX2UUn1PNfC7XtgQVvY9sSappump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Aesoperator",
     "ticker": "AESOP",
     "sc": "CpEpquNgiGyeMeTBrJJCgMXL8vn1jCkWKVbSurhJpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Galaxy Wa",
     "ticker": "GWT",
     "sc": "GWTipxSJVPmmW2wCjBdkbnEJbCRCyrhL2x9zuHRPPTj1",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -3910,56 +3952,56 @@
     "nama_token": "Game X",
     "ticker": "GXT",
     "sc": "FAwcjs9BKzyBfM9AMe5axNL6xMvDc1Gsey1TbXQFzBKW",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "CATVAX",
     "ticker": "CATVAX",
     "sc": "EVDoPXkWNRMc7fQirg7emNdc17KNqsCyzVi4mWPmDvni",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Epileptic",
     "ticker": "EPILEPTIC",
     "sc": "HwPtbFpd3VTe3tfyosoVtPf9WPuSk5gAKkN5xp6Npump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Quantum PAWS",
     "ticker": "PAWSOLD",
     "sc": "29nH8RCcP8Kwr85rHCm6hfC8zoKtJqWh7dhwJWCzuAH5",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Forest",
     "ticker": "FORESTOLD",
     "sc": "BoAQaykj3LtkM2Brevc7cQcRAzpqcsP47nJ2rkyopump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "AIntivirus",
     "ticker": "AINTI",
     "sc": "BAezfVmia8UYLt4rst6PCU4dvL2i2qHzqn4wGhytpNJW",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Gen Z Quant",
     "ticker": "QUANT",
     "sc": "3an8rhdepsLCya22af7qDBKPbdomw8K4iCHXaA2Gpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Launch On Pump",
     "ticker": "LAUNCHONPUMP",
     "sc": "B5boCskXEFb1RJJ9EqJNV3gt5fjhk85DeD7BgbLcpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -4194,7 +4236,7 @@
   },
   {
     "cex": "MEXC",
-    "nama_token": "GUMMY",
+    "nama_token": "gummy",
     "ticker": "GUMMY",
     "sc": "H7bTHGb5Cvo5fGe5jBDNDPUv8KykQnzyZA3qZ8sH7yxw",
     "decimals": 9
@@ -4988,21 +5030,21 @@
     "nama_token": "Sandy Codex",
     "ticker": "SANDY",
     "sc": "61yG5LCoeoqzBdopXPy6BsVPTGdRXht95L68hj5ipump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Jason Derulo",
     "ticker": "JASON",
     "sc": "6SUryVEuDz5hqAxab6QrGfbzWvjN8dC7m29ezSvDpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SQUIDGAME",
     "ticker": "DALMATIAN",
     "sc": "3CSeAGiw5TYeuZfB74adUM1M9if1fEDXzr5PrnuNpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -5150,6 +5192,13 @@
     "ticker": "TNSR",
     "sc": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
     "decimals": 9
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "maxxing",
+    "ticker": "MAXXING",
+    "sc": "32CdQdBUxbCsLy5AUHWmyidfwhgGUr9N573NBUrDpump",
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6353,14 +6402,14 @@
     "nama_token": "SolNav AI",
     "ticker": "SOLNAV",
     "sc": "NAVsy3R5W6WzhZxKzPc8PZ3r4hmjTd9XBYyfYeUrMNL",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "NORA",
     "ticker": "NORA",
     "sc": "3Yie9s6iuEmk8aiXYC19xaq2iccTuFzyfKBWv6gFpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6374,28 +6423,28 @@
     "nama_token": "DRA",
     "ticker": "DRASOL",
     "sc": "8h3jsXbvBRPKGGRPhoYRHr7ca8qH3tBeaE2S93X1pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "ZARA AI",
     "ticker": "ZARA",
     "sc": "73UdJevxaNKXARgkvPHQGKuv8HCZARszuKW2LTL3pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Blinkdotfun",
     "ticker": "BLINKOLD1",
     "sc": "b1nkm6skdrwXoMku8CVx8Fk4LfC2jAqxV3m9VDNjYqz",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SwarmNode.ai",
     "ticker": "SNAI",
     "sc": "APbVLtq66bKBpUUdncHtVSab9TM1UrcqZ9wodXzmpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6416,21 +6465,21 @@
     "nama_token": "HARRYBOLZ",
     "ticker": "HARRYBOLZ1",
     "sc": "AXhwmGKt9TTrKoPenmm3rjXqU3XGZiz7ubyqeivQpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Clippy",
     "ticker": "CLIPPY",
     "sc": "GKjAe1bQXXLoEitJYSuyw6qt97tTVoKkGEgWPEo6pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Real AIOS Foundation",
     "ticker": "AIOS",
     "sc": "5QS7RcHfGUa2ZtrovPvEJMB9coqroiT7H48dPSwFpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6444,14 +6493,14 @@
     "nama_token": "Altar of Creativity",
     "ticker": "AION",
     "sc": "J5E3hHAMpxjm5fxE4hjBRR6Da4UBazAuNXbBhdp8k1ww",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Sora Labs",
     "ticker": "SORALABS",
     "sc": "89nnWMkWeF9LSJvAWcN2JFQfeWdDk6diKEckeToEU1hE",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6472,77 +6521,77 @@
     "nama_token": "YouSim AI",
     "ticker": "YOUSIM",
     "sc": "66gsTs88mXJ5L4AtJnWqFW6H2L5YQDRy4W41y6zbpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Perpetual Cow",
     "ticker": "COW1",
     "sc": "FWGC5ziwYMCT29y913WZSHmkSh7mF4MiddQwEBx5A6XA",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Stardom AI",
     "ticker": "STARDM",
     "sc": "Faph9CjPwV9pRz642sbgnhhXVQFhQJZrWp8jspEDpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "The Lion",
     "ticker": "LION",
     "sc": "8NfK7b9u1RvMpHJnAnZki4mNQwjhvzrVZs7bRQatpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "AI Powered CMP",
     "ticker": "AICMP",
     "sc": "BAEXK4X6B3hkqmEkPuyyZQ5fZUb5iZ6SaJ7a9UDnpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Karma Coin",
     "ticker": "KARMA",
     "sc": "EdN7mEndu6esJox7WxDdPhGZhmhYkFN9bTgsAxnNpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "CONSENT",
     "ticker": "CONSENT",
     "sc": "5dSqxyEpAYwp7rAS6ocwmgyZqYKdeyNjWchwr91fpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Kolwaii",
     "ticker": "KWAII",
     "sc": "6uVJY332tiYwo58g3B8p9FJRGmGZ2fUuXR8cpiaDpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Eva Everywhere",
     "ticker": "EVA1",
     "sc": "4gfNpwo8LQtcgGrNmgWhuwfFhttgZ8Qb6QXN4Yz8BAGS",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Evan The Hobo",
     "ticker": "EVAN",
     "sc": "GFUgXbMeDnLkhZaJS3nYFqunqkFNMRo9ukhyajeXpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Boopa",
     "ticker": "BOOPA",
     "sc": "JmMRbLcKgNCu17yHZDAn4strE5NjmWJ4pCeJ7s7boop",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -6556,14 +6605,14 @@
     "nama_token": "Plankton in Pain",
     "ticker": "AAAHHM",
     "sc": "7Rtegu95FZZ2KX3zA37LU1ypicxu6pBysNEagFwhpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "AIWS",
     "ticker": "AIWS",
     "sc": "hMqjUNgePRaRaFcvMh7WxMbmuBMBKQEubmruxwopump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6577,7 +6626,7 @@
     "nama_token": "Fair and Free",
     "ticker": "FAIR3OLD",
     "sc": "42kgc4RDpWBMM5qtuaHenJuMzfk7nu1t7HSau74cpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6605,35 +6654,35 @@
     "nama_token": "Chatni",
     "ticker": "CHATNI",
     "sc": "6CnDgbCpgeVhHWujctEwSLpVcGTZvGzR6eWh2VvB2nNo",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "MyCryptoProtocol",
     "ticker": "MCP",
     "sc": "DLLBw7Ecw8pQ8TBxRkY45P6wX9U6PsxpRgzKR7EDpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Stream SZN",
     "ticker": "STRSZN",
     "sc": "986j8mhmidrcbx3wf1XJxsQFvWBMXg7gnDi3mejsr8H8",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "PYTHIA",
     "ticker": "PYTHIA",
     "sc": "CreiuhfwdWCN5mJbMJtA9bBpYQrQF2tCBuZwSPWfpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "RETARDIO",
     "ticker": "RETARDIO",
     "sc": "6ogzHhzdrQr9Pgv6hZ2MNze7UrzBMAFyBBWUYp1Fhitx",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6647,77 +6696,77 @@
     "nama_token": "Mafia",
     "ticker": "MAFIA",
     "sc": "HLA6HrMV4wE7w7gbNTdES9XMkkoiSbZGH3rC5i1Upump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Retardia",
     "ticker": "RETARDIA",
     "sc": "7RrLheV7dSecVka3MfjYb4Wa6Z6uegNyzhpFeERsfFZP",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "NPC Solana",
     "ticker": "NPCS",
     "sc": "5ToDNkiBAK6k697RRyngTburU7yZNFZFx7jzsD1Uc7pK",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Degen Spartan AI",
     "ticker": "DEGENAI",
     "sc": "Gu3LDkn7Vx3bmCzLafYNKcDxv2mH7YN44NJZFXnypump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SolThe Trophy Tomato",
     "ticker": "SOLTOMATO",
     "sc": "jk1T35eWK41MBMM8AWoYVaNbjHEEQzMDetTsfnqpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Avici",
     "ticker": "AVICI",
     "sc": "BANKJmvhT8tiJRsBSS1n2HryMBPvT5Ze4HU95DUAmeta",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "MECCA",
     "ticker": "MEA",
     "sc": "mecySk7eSawDNfAXvW3CquhLyxyKaXExFXgUUbEZE1T",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Mertcash",
     "ticker": "MEC",
     "sc": "8HxW9Z3YT1gXgQcgEynZaHsEpLXRgijGfMYCkaAypump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "PEGA",
     "ticker": "PEGA",
     "sc": "3PPnF2QxVTm6TkxUT597ky549S2jt13YpqzW6U1D7kv3",
-    "decimals": 0
+    "decimals": 2
   },
   {
     "cex": "MEXC",
     "nama_token": "Mei Solutions",
     "ticker": "MEI",
     "sc": "4MshgHvWGvxDs8mtFqPGKC8kX6kuhniWSYPguBb1p1bh",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "ZAILGO",
     "ticker": "ZAILGO",
     "sc": "GorvUUSkJGSzJUebM5W6berUkZ5pG8nmnn7tmk74pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6745,21 +6794,21 @@
     "nama_token": "Verse World",
     "ticker": "VERSEWORLD",
     "sc": "vRseBFqTy9QLmmo5qGiwo74AVpdqqMTnxPqWoWMpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "retardcoin",
     "ticker": "RETARD",
     "sc": "FtTSDNLD5mMLn3anqEQpy44cRdrtAJRrLX2MKXxfpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Never Give Up",
     "ticker": "MINER",
     "sc": "Gka1TQEevBbVw4W9K15ER96ZzKByMTb6TBMQzWFEpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6773,42 +6822,42 @@
     "nama_token": "StealthSDK",
     "ticker": "STEALTH",
     "sc": "BUfMXdTHqKGVztQjYRB2b4v7EKAv4cheMg8Uu16Npump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Pelfort",
     "ticker": "PELF",
     "sc": "BgJW7U1u2RY5XJk9uYb5AqFRzjMtqE7pw3kaf9iw9Ntz",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "The9bit",
     "ticker": "9BIT",
     "sc": "HmMubgKx91Tpq3jmfcKQwsv5HrErqnCTTRJMB6afFR2u",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Mia Ko",
     "ticker": "MIA",
     "sc": "FyPDfX92B4uEk4zZouy96d1Kk1LgnCznBpzAFSsZpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Cupsey",
     "ticker": "CUPSEY",
     "sc": "5PsnNwPmMtsGZgG6ZqMoDJJi28BR5xpAotXHHiQhpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Solly",
     "ticker": "SOLLY",
     "sc": "36CEGUfsUU6XXPHPXi62NKXoQ438qN8o1EZM1dgm6DFP",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -6822,21 +6871,21 @@
     "nama_token": "Cloudyheart",
     "ticker": "CLOUDY",
     "sc": "BrZmDQwbdLXme3uaea8znLhy9Bb3fucMJmcFBuRPpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "It s just a Dog",
     "ticker": "DOGSOL",
     "sc": "61uiuu5aAc2HG1ZQaHd3opfLnK6cM4FQnE1jRi28pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "AVIAH Protocol",
     "ticker": "AVIAH",
     "sc": "HdYskPuX5cBApzGqFtoyKdzLxfsLCQxucQfmX2FiquWo",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -6850,49 +6899,49 @@
     "nama_token": "FREE Shayne Coplan",
     "ticker": "SHAYNE",
     "sc": "AyxrBmqbzf169oe14XcSDMbgpUV1ntP6thcScYpYpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "MLG",
     "ticker": "MLG",
     "sc": "7XJiwLDrjzxDYdZipnJXzpr1iDTmK55XixSFAa7JgNEL",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "ratomilton",
     "ticker": "MILTON",
     "sc": "FFXsbx4rPwM8CyKKZiPU3YS9xFFirww6QEzb6KCCpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "WAIT",
     "ticker": "WAITSOL",
     "sc": "CbUPTbC4K7zdAEWxfa1nad4468xpX3LpWPhZVnzybhfN",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "PEPECOIN",
     "ticker": "PEP1",
     "sc": "BKmYE8w1GEQ6khhLkvMj4ULvV4Gq7zLfJZSgsHE5pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Hoshimachi Suisei",
     "ticker": "SUISEI",
     "sc": "8vtRhUm7mrU6jg9YG19Qc8UEhRbMwTXwNQ52xizpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Percolator SOV",
     "ticker": "PERC",
     "sc": "A16Gd8AfaPnG6rohE6iPFDf6mr9gk519d6aMUJAperc",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6913,56 +6962,56 @@
     "nama_token": "Moemate",
     "ticker": "MOE",
     "sc": "8xzoj8mVmXtBQm6d2euJGFPvQ2QsTV5R8cdexi2qpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "RETAIL",
     "ticker": "RETAIL",
     "sc": "AB3VQAB9AtAqhhyT2sxxQzZ4g2EeWLyQjvtZoSZHpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "OSOL",
     "ticker": "OSOL",
     "sc": "2otVNpcHXn9MKeDk3Zby5uanF3s7tki4toaJ3PZcXaUd",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Promptbidder",
     "ticker": "PROMPTBIDDER",
     "sc": "9NW7fiBu4uHpLx3rxiMccucyKwADwuptTpb8z2YYj9SH",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "FARTGIRL",
     "ticker": "FARTGIRL",
     "sc": "Cjrrc595e9R47EZ3gkbUmL6ZZpLSxiXg16v2Y3Aapump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Smudge Cat",
     "ticker": "SMUDGE",
     "sc": "9YtudLX9P6BtEihwpg66YKQ3qGBr2KxdXMgTbgcJzxAN",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "MAGA PEPE",
     "ticker": "MAGAPEPE",
     "sc": "2Xn4cBcrksaBMMxw8EbwuxY7iG8HUiZx1XEiCXQsGeSo",
-    "decimals": 0
+    "decimals": 2
   },
   {
     "cex": "MEXC",
     "nama_token": "Franklin",
     "ticker": "FRANKLIN",
     "sc": "CSrwNk6B1DwWCHRMsaoDVUfD5bBMQCJPY72ZG3Nnpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -6976,21 +7025,21 @@
     "nama_token": "Bless",
     "ticker": "BLESS",
     "sc": "A1t2UviBYwyfYZDJyKY2W6Td8ritgsCriUDuNaAQN49S",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Schizo",
     "ticker": "SCHIZO",
     "sc": "8sWKTMrh9bWUrvykK4H3jzEzGbEqvJNpS2f7joYKpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "Cats of Sol",
     "ticker": "COSOLD2",
     "sc": "3obNTknsf4hq5pNh3GDPEhyCB9WTKJJzM2PcqfKgLmBu",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -7004,77 +7053,84 @@
     "nama_token": "Homer Simpson",
     "ticker": "HOMER",
     "sc": "DbDzhx2YaSiRs1SmE3WoTgSUzUCMKWvLRRHQ8C3WjqVH",
-    "decimals": 0
+    "decimals": 1
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "Kimchicoin",
+    "ticker": "KIMCHI",
+    "sc": "AWpD39myXc7emw5M9cMCofkbo92x5FKWdGHWYpZFdoge",
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Unleash Jugs",
     "ticker": "JUGS",
     "sc": "AhVJQY1mGjjQpRiMEcCXwkFc8QagKwcqUSpqwN7S9gag",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Pibble",
     "ticker": "PIBBLE",
     "sc": "Eppcp4FhG6wmaRno3omWWvKsZHbzucVLR316SdXopump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SOARCHAIN",
     "ticker": "SOAR",
     "sc": "9359LVZJs8bf2FXcTdHvwcMnvg2ZCf6DUZ5ABDcJKx52",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "CATTON-SOL",
     "ticker": "CATTON",
     "sc": "EnYkmHKm13mLnBgpvHJZE2T6rqi8weQXoFuPccW9ZiD5",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SoBit Bridge",
     "ticker": "SOBB",
     "sc": "KDriegomzHbJDmGkVWFuXrZWfpiruauhMSTg7N6WZvD",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SolFarm",
     "ticker": "SFARM",
     "sc": "BjBzvw6VX7UJtrC7BaYLG1dHBiwrXP1T9j2YfDEdP4zU",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "MvG",
     "ticker": "MVG",
     "sc": "qRUZaCpgxaRH1s5V6opjPA6Hnpv5BM37LqkDBw7pump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "SACHI",
     "ticker": "SACHI",
     "sc": "SAcHiYijzFQxerTHDzEtQadyQ1E1VdxZZxfUqznC96f",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "KoKoK The Roach",
     "ticker": "KOKOK",
     "sc": "5HkhVG2bSb5PGjhX5QHm9urUquD7tx5eAau5Fonq78zc",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
     "nama_token": "Sodi Protocol",
     "ticker": "SODI",
     "sc": "21zDpSK5dxkybjMpp5VwAx5CRSEuVqHZLxXBrq29bFRa",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "MEXC",
@@ -7354,7 +7410,7 @@
     "nama_token": "PUMPCADE",
     "ticker": "PUMPCADE",
     "sc": "Eg2ymQ2aQqjMcibnmTt8erC6Tvk9PVpJZCxvVPJz2agu",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -7365,17 +7421,17 @@
   },
   {
     "cex": "MEXC",
-    "nama_token": "One Punch Cat",
+    "nama_token": "PUNCH",
     "ticker": "PUNCH",
-    "sc": "of28WzrGVqVKCC35zjkQBrndCCDzErtzg7cj2mypump",
-    "decimals": 0
+    "sc": "NV2RYH954cTJ3ckFUpvfqaQXU4ARqqDH3562nFSpump",
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "GLP1 Science",
     "ticker": "GLP1",
     "sc": "1VHpwkbT3TZ7VjqwrAxvPbQCg2HkBNMrPW2WsQspump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -7403,14 +7459,14 @@
     "nama_token": "Game X",
     "ticker": "GXTOLD2",
     "sc": "CzBQvE7mwDYvhiXQxGzLX4Jo8upenobt7zZpDLAcFoa9",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
     "nama_token": "The Mountain",
     "ticker": "MOUNTAIN",
     "sc": "GASfLqDbE8c9w8mjKknxaHeDMmdy9usGwM1GwzVJpump",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "MEXC",
@@ -7915,6 +7971,13 @@
     "ticker": "CRCLX",
     "sc": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
     "decimals": 8
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "Mushu",
+    "ticker": "MUSHU",
+    "sc": "5Jr9hGmJgxBRjjF8XGcGgQzXUdsbpZNNMpigEv8Wpump",
+    "decimals": 0
   },
   {
     "cex": "MEXC",
@@ -8835,7 +8898,7 @@
   },
   {
     "cex": "MEXC",
-    "nama_token": "FARTCOIN",
+    "nama_token": "fartcoin",
     "ticker": "FARTCOIN",
     "sc": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
     "decimals": 6
@@ -9150,6 +9213,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "Panda Swap",
+    "ticker": "PANDAOLD2",
+    "sc": "9m21fukdvCPBgEjmeeshbskPwbaa5RH8HTHQGeTnGd2t",
+    "decimals": 0
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "Rome",
     "ticker": "ROME",
     "sc": "8ZeTmGGktvSwSSghx8btbTAVGdWogThKM4DQBJgRpump",
@@ -9231,6 +9301,13 @@
     "ticker": "DOGEN",
     "sc": "B7xavrAozTa1msQxu8YAcvPftf76x1fJYyLrYdTnbrah",
     "decimals": 6
+  },
+  {
+    "cex": "MEXC",
+    "nama_token": "Clude",
+    "ticker": "CLUDE",
+    "sc": "AWGCDT2gd8JadbYbYyZy1iKxfWokPNgrEQoU24zUpump",
+    "decimals": 0
   },
   {
     "cex": "MEXC",
@@ -9850,6 +9927,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "Binder Protocol",
+    "ticker": "BINDER",
+    "sc": "BeFtLwLtS9Rva12KrHKRMY1H5WoeM1Y2ULMnNJKopump",
+    "decimals": 0
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "OGLong",
     "ticker": "OGLG",
     "sc": "D4R5MEE6eAywxURZJzwyVPcKxrzsSCgHV3VN667LLLv4",
@@ -10347,6 +10431,13 @@
   },
   {
     "cex": "MEXC",
+    "nama_token": "The Voter Dog",
+    "ticker": "MAYA",
+    "sc": "EtL967sgMgeDDSUrNhtQrbhe4T92idzqf4VuA6H7uGfQ",
+    "decimals": 0
+  },
+  {
+    "cex": "MEXC",
     "nama_token": "San Chan",
     "ticker": "SAN",
     "sc": "2z1p8xCEjRzpBHjXWrx4tJnz7BFL6z7NnvbCxH7bpump",
@@ -10491,6 +10582,13 @@
     "ticker": "BMT",
     "sc": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
     "decimals": 9
+  },
+  {
+    "cex": "GATE",
+    "nama_token": "Solana",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
   },
   {
     "cex": "GATE",
@@ -11474,7 +11572,7 @@
   },
   {
     "cex": "GATE",
-    "nama_token": "BIAO",
+    "nama_token": "Biao",
     "ticker": "BIAO",
     "sc": "2ru87k7yAZnDRsnqVpgJYETFgqVApuBcwB2xDb19pump",
     "decimals": 6
@@ -11810,7 +11908,7 @@
   },
   {
     "cex": "GATE",
-    "nama_token": "CYS_OLD",
+    "nama_token": "Cyclos",
     "ticker": "CYS_OLD",
     "sc": "BRLsMczKuaR5w9vSubF4j8HwEGGprVAyyVgS4EX7DKEg",
     "decimals": 6
@@ -11950,7 +12048,7 @@
   },
   {
     "cex": "GATE",
-    "nama_token": "BABYSHARK_OLD",
+    "nama_token": "BABYSHARK",
     "ticker": "BABYSHARK_OLD",
     "sc": "8nKP8Vc72pRZB6bhCy8D1UYf6ZjwYT859i6awyinpump",
     "decimals": 6
@@ -12412,7 +12510,7 @@
   },
   {
     "cex": "GATE",
-    "nama_token": "BOOP",
+    "nama_token": "BOOP-BSC",
     "ticker": "BOOP",
     "sc": "boopkpWqe68MSxLqBGogs8ZbUDN4GXaLhFwNP7mpP1i",
     "decimals": 9
@@ -12541,7 +12639,7 @@
     "nama_token": "Index ZERO",
     "ticker": "ZERO",
     "sc": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "GATE",
@@ -12993,6 +13091,13 @@
   },
   {
     "cex": "KUCOIN",
+    "nama_token": "SOL",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "KUCOIN",
     "nama_token": "Solanium",
     "ticker": "SLIM",
     "sc": "xxxxa1sKNGwFtw2kFn8XauW9xq8hBZ5kVtcSesTT9fW",
@@ -13039,6 +13144,13 @@
     "ticker": "SRM",
     "sc": "SRMuApVNdxXokk5GT7XD5cUUgXMBCoAz2LHeuAoKWRt",
     "decimals": 6
+  },
+  {
+    "cex": "KUCOIN",
+    "nama_token": "Kin",
+    "ticker": "KINOLD",
+    "sc": "kinXdEcpDQeHPEuQnqmUgtYykqKGVFq6CeVX5iAHJq6",
+    "decimals": 5
   },
   {
     "cex": "KUCOIN",
@@ -13133,14 +13245,14 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "FIDA",
+    "nama_token": "Bonfida",
     "ticker": "FIDA",
     "sc": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
     "decimals": 6
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "MPLX",
+    "nama_token": "mplx",
     "ticker": "MPLX",
     "sc": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
     "decimals": 6
@@ -13189,7 +13301,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "Jito",
+    "nama_token": "JITO",
     "ticker": "JTO",
     "sc": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     "decimals": 9
@@ -13322,7 +13434,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "Wormhole Token",
+    "nama_token": "Wormhole",
     "ticker": "W",
     "sc": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
     "decimals": 6
@@ -13420,7 +13532,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "Render Network",
+    "nama_token": "Render",
     "ticker": "RENDER",
     "sc": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
     "decimals": 8
@@ -13455,7 +13567,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "GOAT",
+    "nama_token": "Goatseus Maximus",
     "ticker": "GOAT",
     "sc": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
     "decimals": 6
@@ -13504,7 +13616,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "RIFSOL",
+    "nama_token": "rif",
     "ticker": "RIFSOL",
     "sc": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
     "decimals": 6
@@ -13630,7 +13742,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "FARTCOIN",
+    "nama_token": "fartcoin",
     "ticker": "FARTCOIN",
     "sc": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
     "decimals": 6
@@ -13658,7 +13770,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "ARCSOL",
+    "nama_token": "arc",
     "ticker": "ARCSOL",
     "sc": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
     "decimals": 6
@@ -13777,7 +13889,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "GRIFT",
+    "nama_token": "grift",
     "ticker": "GRIFT",
     "sc": "GekTNfm84QfyP2GdAHZ5AgACBRd69aNmgA5FDhZupump",
     "decimals": 6
@@ -13833,7 +13945,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "bmt",
+    "nama_token": "BMT-BSC",
     "ticker": "BMT",
     "sc": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
     "decimals": 9
@@ -13875,7 +13987,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "GORK",
+    "nama_token": "gork",
     "ticker": "GORK",
     "sc": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
     "decimals": 6
@@ -13917,7 +14029,7 @@
   },
   {
     "cex": "KUCOIN",
-    "nama_token": "usd1",
+    "nama_token": "USD1-ABCORE",
     "ticker": "USD1",
     "sc": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
     "decimals": 6
@@ -14228,7 +14340,7 @@
     "nama_token": "9BIT",
     "ticker": "9BIT",
     "sc": "HmMubgKx91Tpq3jmfcKQwsv5HrErqnCTTRJMB6afFR2u",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "KUCOIN",
@@ -14246,14 +14358,14 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "WUF",
+    "nama_token": "Wuffi",
     "ticker": "WUF",
     "sc": "73xsLcBnLnc9bh81cqVKqj8uEyiarXng5ZwJuTbnVebG",
     "decimals": 4
   },
   {
     "cex": "BITGET",
-    "nama_token": "CATDOG",
+    "nama_token": "Catdog",
     "ticker": "CATDOG",
     "sc": "CATTzAwLyADd2ekzVjTjX8tVUBYfrozdkJBkutJggdB7",
     "decimals": 8
@@ -14277,7 +14389,7 @@
     "nama_token": "GINNAN",
     "ticker": "GINNAN",
     "sc": "GinNabffZL4fUj9Vactxha74GDAW8kDPGaHqMtMzps2f",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "BITGET",
@@ -14298,7 +14410,7 @@
     "nama_token": "ZERO",
     "ticker": "ZERO",
     "sc": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "BITGET",
@@ -14386,7 +14498,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "SLND",
+    "nama_token": "Solend",
     "ticker": "SLND",
     "sc": "SLNDpmoWTVADgEdndyvWzroNL7zSi1dF9PC3xHGtPwp",
     "decimals": 6
@@ -14445,7 +14557,7 @@
     "nama_token": "BLESS",
     "ticker": "BLESS",
     "sc": "A1t2UviBYwyfYZDJyKY2W6Td8ritgsCriUDuNaAQN49S",
-    "decimals": 0
+    "decimals": 9
   },
   {
     "cex": "BITGET",
@@ -14491,14 +14603,14 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "GOAT",
+    "nama_token": "Goatseus Maximus",
     "ticker": "GOAT",
     "sc": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
     "decimals": 6
   },
   {
     "cex": "BITGET",
-    "nama_token": "Act I: The AI Prophecy",
+    "nama_token": "The AI Prophecy",
     "ticker": "ACT",
     "sc": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
     "decimals": 6
@@ -14547,7 +14659,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "FARTCOIN",
+    "nama_token": "fartcoin",
     "ticker": "FARTCOIN",
     "sc": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
     "decimals": 6
@@ -14568,7 +14680,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "RIFSOL",
+    "nama_token": "rif",
     "ticker": "RIFSOL",
     "sc": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
     "decimals": 6
@@ -14603,7 +14715,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "alch",
+    "nama_token": "Alchemist AI",
     "ticker": "ALCH",
     "sc": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
     "decimals": 6
@@ -14624,7 +14736,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "PENG",
+    "nama_token": "Peng",
     "ticker": "PENG",
     "sc": "A3eME5CetyZPBoWbRUwY3tSe25S6tb18ba9ZPbWk9eFJ",
     "decimals": 6
@@ -14659,7 +14771,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "NEVER",
+    "nama_token": "Neversol",
     "ticker": "NEVER",
     "sc": "CxrhHSqyW8YTDWc4csJMMgo7uBUJSXzNzrWhtw9ULdru",
     "decimals": 6
@@ -14701,7 +14813,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "DUKO",
+    "nama_token": "Duko",
     "ticker": "DUKO",
     "sc": "HLptm5e6rTgh4EKgDpYFrnRHbjpkMyVdEeREEa2G7rf9",
     "decimals": 6
@@ -14750,7 +14862,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "PENGUIN",
+    "nama_token": "Nietzschean Penguin",
     "ticker": "PENGUIN",
     "sc": "8Jx8AAHj86wbQgUTjGuj6GTTL5Ps3cqxKRTvpaJApump",
     "decimals": 6
@@ -14806,7 +14918,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "CHAT",
+    "nama_token": "Solchat",
     "ticker": "CHAT",
     "sc": "947tEoG318GUmyjVYhraNRvWpMX7fpBTDQFBoJvSkSG3",
     "decimals": 9
@@ -14848,7 +14960,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "ARC",
+    "nama_token": "arc",
     "ticker": "ARC",
     "sc": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
     "decimals": 6
@@ -14953,7 +15065,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "Unicorn Fart Dust",
+    "nama_token": "ufd",
     "ticker": "UFD",
     "sc": "eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump",
     "decimals": 6
@@ -15002,7 +15114,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "NUB",
+    "nama_token": "nubcat",
     "ticker": "NUB",
     "sc": "GtDZKAqvMZMnti46ZewMiXCa4oXF4bZxwQPoKzXPFxZn",
     "decimals": 9
@@ -15016,7 +15128,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "DOPE",
+    "nama_token": "Dopamine",
     "ticker": "DOPE",
     "sc": "8Kqmghm1mkXbKYqt2wGnHxwnRdEjD9nayNKD3EanWkcD",
     "decimals": 8
@@ -15030,7 +15142,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "Wormhole Token",
+    "nama_token": "Wormhole",
     "ticker": "W",
     "sc": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
     "decimals": 6
@@ -15044,7 +15156,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "CHATAI",
+    "nama_token": "ChatAI",
     "ticker": "CHATAI",
     "sc": "DpfVseMtcwUMuMaNUgVoshxQ7Uo4Brtna3k5NaN44U1g",
     "decimals": 9
@@ -15072,7 +15184,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "KOKO",
+    "nama_token": "Koala AI",
     "ticker": "KOKO",
     "sc": "FsA54yL49WKs7rWoGv9sUcbSGWCWV756jTD349e6H2yW",
     "decimals": 6
@@ -15170,7 +15282,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "bmt",
+    "nama_token": "BMT-BSC",
     "ticker": "BMT",
     "sc": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
     "decimals": 9
@@ -15184,7 +15296,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "ghibli",
+    "nama_token": "Ghiblification",
     "ticker": "GHIBLI",
     "sc": "4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump",
     "decimals": 6
@@ -15212,7 +15324,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "GORK",
+    "nama_token": "gork",
     "ticker": "GORK",
     "sc": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
     "decimals": 6
@@ -15296,7 +15408,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "nyan",
+    "nama_token": "Nyan Cat",
     "ticker": "NYAN",
     "sc": "NYANpAp9Cr7YarBNrby7Xx4xU6No6JKTBuohNA3yscP",
     "decimals": 9
@@ -15359,7 +15471,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "mother",
+    "nama_token": "MOTHER IGGY",
     "ticker": "MOTHER",
     "sc": "3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
     "decimals": 6
@@ -15380,7 +15492,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "DADDY",
+    "nama_token": "Daddy Tate",
     "ticker": "DADDY",
     "sc": "4Cnk9EPnW5ixfLZatCPJjDB1PUtcRpVVgTQukm9epump",
     "decimals": 6
@@ -15394,21 +15506,21 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "FIDA",
+    "nama_token": "Bonfida",
     "ticker": "FIDA",
     "sc": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
     "decimals": 6
   },
   {
     "cex": "BITGET",
-    "nama_token": "WATER",
+    "nama_token": "WATER MEMECOIN",
     "ticker": "WATER",
     "sc": "B6h248NJkAcBAkaCnji889a26tCiGXGN8cxhEJ4dX391",
     "decimals": 6
   },
   {
     "cex": "BITGET",
-    "nama_token": "Jito",
+    "nama_token": "JITO",
     "ticker": "JTO",
     "sc": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     "decimals": 9
@@ -15443,6 +15555,13 @@
   },
   {
     "cex": "BITGET",
+    "nama_token": "SOL",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "BITGET",
     "nama_token": "frag",
     "ticker": "FRAG",
     "sc": "FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
@@ -15464,14 +15583,14 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "ATLAS",
+    "nama_token": "Star Atlas",
     "ticker": "ATLAS",
     "sc": "ATLASXmbPQxBUYbxPsV97usA3fPQYEqzQBUHgiFCUsXx",
     "decimals": 8
   },
   {
     "cex": "BITGET",
-    "nama_token": "POLIS",
+    "nama_token": "Star Atlas DAO",
     "ticker": "POLIS",
     "sc": "poLisWXnNRwC6oBu1vHiuKQzFjGL4XDSu4g9qjz9qVk",
     "decimals": 8
@@ -15527,7 +15646,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "SCRAT",
+    "nama_token": "Scrat",
     "ticker": "SCRAT",
     "sc": "3GEznP41VaAGv9yRdBiuYdA8zkffNc8b7DzNJgFbH4Kh",
     "decimals": 6
@@ -15541,10 +15660,10 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "JAIL",
+    "nama_token": "JailbreakMe",
     "ticker": "JAIL",
     "sc": "7g9yXDhBnS9QycNVK4QP9amcotcsqNEa2Pq8QnX5wXxH",
-    "decimals": 0
+    "decimals": 6
   },
   {
     "cex": "BITGET",
@@ -15569,7 +15688,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "LANDWOLF",
+    "nama_token": "LandWolf-SOL",
     "ticker": "LANDWOLF",
     "sc": "Faf89929Ni9fbg4gmVZTca7eW6NFg877Jqn6MizT3Gvw",
     "decimals": 8
@@ -15590,7 +15709,7 @@
   },
   {
     "cex": "BITGET",
-    "nama_token": "Render Network",
+    "nama_token": "Render",
     "ticker": "RENDER",
     "sc": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
     "decimals": 8
@@ -15646,14 +15765,14 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "alch",
+    "nama_token": "Alchemist AI",
     "ticker": "ALCH",
     "sc": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
     "decimals": 6
   },
   {
     "cex": "BYBIT",
-    "nama_token": "AMZNX",
+    "nama_token": "Amazon.com xStock",
     "ticker": "AMZNX",
     "sc": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
     "decimals": 8
@@ -15695,7 +15814,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "bmt",
+    "nama_token": "BMT-BSC",
     "ticker": "BMT",
     "sc": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
     "decimals": 9
@@ -15737,7 +15856,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "COINX",
+    "nama_token": "Coinbase xStock",
     "ticker": "COINX",
     "sc": "Xs7ZdzSHLU9ftNJsii5fCeJhoRWSC32SQGzGQtePxNu",
     "decimals": 8
@@ -15793,7 +15912,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "ELIX",
+    "nama_token": "Elixir Games",
     "ticker": "ELIX",
     "sc": "5cbq1HriesW4zHpFEk9Gc8UT4ccmfHcBTDCa2XcBduTo",
     "decimals": 9
@@ -15814,7 +15933,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "FIDA",
+    "nama_token": "Bonfida",
     "ticker": "FIDA",
     "sc": "EchesyfXePKdLtoiZSL8pBe8Myagyy8ZRqsACNCFGnvp",
     "decimals": 6
@@ -15849,14 +15968,14 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "GOAT",
+    "nama_token": "Goatseus Maximus",
     "ticker": "GOAT",
     "sc": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
     "decimals": 6
   },
   {
     "cex": "BYBIT",
-    "nama_token": "GOOGLX",
+    "nama_token": "Alphabet xStock",
     "ticker": "GOOGLX",
     "sc": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
     "decimals": 8
@@ -15877,14 +15996,14 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "GUMMY",
+    "nama_token": "gummy",
     "ticker": "GUMMY",
     "sc": "H7bTHGb5Cvo5fGe5jBDNDPUv8KykQnzyZA3qZ8sH7yxw",
     "decimals": 9
   },
   {
     "cex": "BYBIT",
-    "nama_token": "hat",
+    "nama_token": "TOP HAT",
     "ticker": "HAT",
     "sc": "AxGAbdFtdbj2oNXa4dKqFvwHzgFtW9mFHWmd7vQfpump",
     "decimals": 6
@@ -15912,7 +16031,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "HOODX",
+    "nama_token": "Robinhood xStock",
     "ticker": "HOODX",
     "sc": "XsvNBAYkrDRNhA7wPHQfX3ZUXZyZLdnCQDfHZ56bzpg",
     "decimals": 8
@@ -15940,7 +16059,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "Jito",
+    "nama_token": "JITO",
     "ticker": "JTO",
     "sc": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     "decimals": 9
@@ -15982,14 +16101,14 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "MBS",
+    "nama_token": "MonkeyLeague",
     "ticker": "MBS",
     "sc": "Fm9rHUTF5v3hwMLbStjZXqNBBoZyGriQaFM6sTFz3K8A",
     "decimals": 6
   },
   {
     "cex": "BYBIT",
-    "nama_token": "MCDX",
+    "nama_token": "McDonald s xStock",
     "ticker": "MCDX",
     "sc": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
     "decimals": 8
@@ -16031,7 +16150,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "MPLX",
+    "nama_token": "mplx",
     "ticker": "MPLX",
     "sc": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
     "decimals": 6
@@ -16059,7 +16178,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "N3",
+    "nama_token": "Network3",
     "ticker": "N3",
     "sc": "C7DpniLsJBFEZvt6SnS5Ac8tdwuxCW4T3mS1JrfntDdX",
     "decimals": 9
@@ -16080,7 +16199,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "nyan",
+    "nama_token": "Nyan Cat",
     "ticker": "NYAN",
     "sc": "NYANpAp9Cr7YarBNrby7Xx4xU6No6JKTBuohNA3yscP",
     "decimals": 9
@@ -16101,7 +16220,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "PENGUIN",
+    "nama_token": "Nietzschean Penguin",
     "ticker": "PENGUIN",
     "sc": "8Jx8AAHj86wbQgUTjGuj6GTTL5Ps3cqxKRTvpaJApump",
     "decimals": 6
@@ -16185,7 +16304,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "Render Network",
+    "nama_token": "Render",
     "ticker": "RENDER",
     "sc": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
     "decimals": 8
@@ -16206,7 +16325,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "SHARK",
+    "nama_token": "Sharky",
     "ticker": "SHARK",
     "sc": "SHARKSYJjqaNyxVfrpnBN9pjgkhwDhatnMyicWPnr1s",
     "decimals": 6
@@ -16217,6 +16336,13 @@
     "ticker": "SKR",
     "sc": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
     "decimals": 6
+  },
+  {
+    "cex": "BYBIT",
+    "nama_token": "SOL",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
   },
   {
     "cex": "BYBIT",
@@ -16276,7 +16402,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "usd1",
+    "nama_token": "USD1-ABCORE",
     "ticker": "USD1",
     "sc": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
     "decimals": 6
@@ -16304,7 +16430,7 @@
   },
   {
     "cex": "BYBIT",
-    "nama_token": "Wormhole Token",
+    "nama_token": "Wormhole",
     "ticker": "W",
     "sc": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
     "decimals": 6
@@ -16388,885 +16514,10 @@
   },
   {
     "cex": "HTX",
-    "nama_token": "usdt",
-    "ticker": "USDT",
-    "sc": "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "usdc",
-    "ticker": "USDC",
-    "sc": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "btc",
-    "ticker": "BTC",
-    "sc": "5XZw2LKTyrfvfiskJ78AMpackRjPcyCif1WhUsPDuVqQ",
+    "nama_token": "sol",
+    "ticker": "SOL",
+    "sc": "",
     "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "trx",
-    "ticker": "TRX",
-    "sc": "GbbesPbaYh5uiAZSYNXTc7w9jty1rpg3P9L4JeN4LkKc",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "acs",
-    "ticker": "ACS",
-    "sc": "5MAYDfq5yxtudAhtfyuMBuHZjgAbaS9tbEyEQYAhDS5y",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "actsol",
-    "ticker": "ACTSOL",
-    "sc": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "alch",
-    "ticker": "ALCH",
-    "sc": "HNg5PYJmtqcmzXrv6S9zP1CDKk5BgDuyFBxbvNApump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "amu",
-    "ticker": "AMU",
-    "sc": "AMUwxPsqWSd1fbCGzWsrRKDcNoduuWMkdR38qPdit8G8",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "analos",
-    "ticker": "ANALOS",
-    "sc": "7iT1GRYYhEop2nV1dyCwK2MGyLmPHq47WhPGSwiqcUg5",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "ani",
-    "ticker": "ANI",
-    "sc": "9tqjeRS1swj36Ee5C1iGiwAxjQJNGAVCzaTLwFY8bonk",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "arc",
-    "ticker": "ARC",
-    "sc": "61V8vBaqAGMpgDQi4JcAwo1dmBGHsyhzodcPqnEVpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "aury",
-    "ticker": "AURY",
-    "sc": "AURYydfxJib1ZkTir1Jn1J9ECYUtjb6rKQVmtYaixWPP",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "avaai",
-    "ticker": "AVAAI",
-    "sc": "DKu9kykSfbN5LBfFXtNNDPaX35o4Fv6vJ9FKk7pZpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "ban",
-    "ticker": "BAN",
-    "sc": "9PR7nCP9DpcUotnDPVLUBUZKu5WAYkwrCUx9wDnSpump",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "beer",
-    "ticker": "BEER",
-    "sc": "AujTJJ7aMS8LDo3bFzoyXDwT3jBALUbu4VZhzZdTZLmG",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "billy",
-    "ticker": "BILLY",
-    "sc": "3B5wuUrMEi5yATD7on46hKfej3pfmd7t1RKgrsN3pump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "birb",
-    "ticker": "BIRB",
-    "sc": "G7vQWurMkMMm2dU3iZpXYFTHT9Biio4F4gZCrwFpKNwG",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "bmt",
-    "ticker": "BMT",
-    "sc": "FQgtfugBdpFN7PZ6NdPrZpVLDBrPGxXesi4gVu3vErhY",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "bome",
-    "ticker": "BOME",
-    "sc": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "bonk",
-    "ticker": "BONK",
-    "sc": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
-    "decimals": 5
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "bully",
-    "ticker": "BULLY",
-    "sc": "79yTpy8uwmAkrdgZdq6ZSBTvxKsgPrNqTLvYQBh1pump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "buzz",
-    "ticker": "BUZZ",
-    "sc": "9DHe3pycTuymFk4H4bbPoAJ4hQrr2kaLDF6J6aAKpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "chillguy",
-    "ticker": "CHILLGUY",
-    "sc": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "cool",
-    "ticker": "COOL",
-    "sc": "BMwhQ1HXuzA7ucY8NYHyVq2uwuG47GHj1dNP6xJdoPzD",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "cudis",
-    "ticker": "CUDIS",
-    "sc": "CudisfkgWvMKnZ3TWf6iCuHm8pN2ikXhDcWytwz6f6RN",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "dark",
-    "ticker": "DARK",
-    "sc": "8BtoThi2ZoXnF7QQK1Wjmh2JuBw9FjVvhnGMVZ2vpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "dbr",
-    "ticker": "DBR",
-    "sc": "DBRiDgJAMsM95moTzJs7M9LnkGErpbv9v6CUR1DXnUu5",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "degenai",
-    "ticker": "DEGENAI",
-    "sc": "Gu3LDkn7Vx3bmCzLafYNKcDxv2mH7YN44NJZFXnypump",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "dio",
-    "ticker": "DIO",
-    "sc": "BiDB55p4G3n1fGhwKFpxsokBMqgctL4qnZpDH1bVQxMD",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "drift",
-    "ticker": "DRIFT",
-    "sc": "DriFtupJYLTosbwoN8koMbEYSx54aFAVLddWsbksjwg7",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "eliza",
-    "ticker": "ELIZA",
-    "sc": "5voS9evDjxF589WuEub5i4ti7FWQmZCsAsyD5ucbuRqM",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "elizacto",
-    "ticker": "ELIZACTO",
-    "sc": "wUtwjNmjCP9TTTtoc5Xn5h5sZ2cYJm5w2w44b79yr2o",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "elizaos",
-    "ticker": "ELIZAOS",
-    "sc": "DuMbhu7mvQvqQHGcnikDgb4XegXJRyhUBfdU22uELiZA",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "elu",
-    "ticker": "ELU",
-    "sc": "4tJZhSdGePuMEfZQ3h5LaHjTPsw1iWTRFTojnZcwsAU6",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "fartcoin",
-    "ticker": "FARTCOIN",
-    "sc": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "frag",
-    "ticker": "FRAG",
-    "sc": "FRAGMEWj2z65qM62zqKhNtwNFskdfKs4ekDUDX3b4VD5",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gari",
-    "ticker": "GARI",
-    "sc": "CKaKtYvz6dKPyMvYq9Rh3UBrnNqYZAyd7iF4hJtjUvks",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "ghibli",
-    "ticker": "GHIBLI",
-    "sc": "4TBi66vi32S7J8X1A6eWfaLHYmUXu7CStcEmsJQdpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gme",
-    "ticker": "GME",
-    "sc": "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gmt",
-    "ticker": "GMT",
-    "sc": "7i5KKsX2weiTkry7jA4ZwSuXGhs5eJBEjY8vVxR4pfRx",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "goat",
-    "ticker": "GOAT",
-    "sc": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gor",
-    "ticker": "GOR",
-    "sc": "71Jvq4Epe2FCJ7JFSF7jLXdNk1Wy4Bhqd9iL6bEFELvg",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gork",
-    "ticker": "GORK",
-    "sc": "38PgzpJYu2HkiYvV8qePFakB8tuobPdGm2FFEn7Dpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "grass",
-    "ticker": "GRASS",
-    "sc": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "griffain",
-    "ticker": "GRIFFAIN",
-    "sc": "KENJSUYLASHUMfHyy5o4Hp2FdNqZg1AsUPhfH2kYvEP",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "grift",
-    "ticker": "GRIFT",
-    "sc": "GekTNfm84QfyP2GdAHZ5AgACBRd69aNmgA5FDhZupump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "grokcoin",
-    "ticker": "GROKCOIN",
-    "sc": "3MadWqcN9cSrULn8ikDnan9mF3znoQmBPXtVy6BfSTDB",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gst",
-    "ticker": "GST",
-    "sc": "AFbX8oGjGpmVFywbVouvhQSRmiW2aR1mohfahi4Y2AdB",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "gummy",
-    "ticker": "GUMMY",
-    "sc": "H7bTHGb5Cvo5fGe5jBDNDPUv8KykQnzyZA3qZ8sH7yxw",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "hat",
-    "ticker": "HAT",
-    "sc": "AxGAbdFtdbj2oNXa4dKqFvwHzgFtW9mFHWmd7vQfpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "hbb",
-    "ticker": "HBB",
-    "sc": "HBB111SCo9jkCejsZfz8Ec8nH7T6THF8KEKSnvwT6XK6",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "holoworld",
-    "ticker": "HOLOWORLD",
-    "sc": "69RX85eQoEsnZvXGmLNjYcWgVkp9r2JjahVm99KbJETU",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "house",
-    "ticker": "HOUSE",
-    "sc": "DitHyRMQiSDhn5cnKMJV2CDDt6sVct96YrECiM49pump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "io",
-    "ticker": "IO",
-    "sc": "BZLbGTNCSFfoth2GYDtwr7e4imWzpR5jqcUuGEwr646K",
-    "decimals": 8
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "jenner",
-    "ticker": "JENNER",
-    "sc": "4GJ3TCt5mTgQT5BRKb14AkjddpFQqKVfphxzS3t4foZ9",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "jto",
-    "ticker": "JTO",
-    "sc": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "jup",
-    "ticker": "JUP",
-    "sc": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "kama",
-    "ticker": "KAMA",
-    "sc": "HnKkzR1YtFbUUxM6g3iVRS2RY68KHhGV7bNdfF1GCsJB",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "kitty",
-    "ticker": "KITTY",
-    "sc": "EKEWAk7hfnwfR8DBb1cTayPPambqyC7pwNiYkaYQKQHp",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "layer",
-    "ticker": "LAYER",
-    "sc": "LAYER4xPpTCb3QL8S9u41EAhAX7mhBn8Q6xMTwY2Yzc",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "lester",
-    "ticker": "LESTER",
-    "sc": "5z3iCe53hUANTiG8Js8RjHNE2Arjik7L2CXLyr2rpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "like",
-    "ticker": "LIKE",
-    "sc": "3bRTivrVsitbmCTGtqwp7hxXPsybkjn4XLNtPsHqa3zR",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "lljeffy",
-    "ticker": "LLJEFFY",
-    "sc": "83mCRQJzvKMeQd9wJbZDUCTPgRbZMDoPdMSx5Sf1pump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "luce",
-    "ticker": "LUCE",
-    "sc": "CBdCxKo9QavR9hfShgpEBG3zekorAeD7W1jfq2o3pump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "lunasol",
-    "ticker": "LUNASOL",
-    "sc": "9se6kma7LeGcQWyRBNcYzyxZPE3r9t9qWZ8SnjnN3jJ7",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "maneki",
-    "ticker": "MANEKI",
-    "sc": "25hAyBQfoDhfWx9ay6rarbgvWGwDdNqcHsXS3jQ3mTDJ",
-    "decimals": 5
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "may",
-    "ticker": "MAY",
-    "sc": "FJz7ptUR1FwxSHbb8Sfd5Cn6Zt4TqucJZKLqU4n66gdq",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "me",
-    "ticker": "ME",
-    "sc": "MEFNBXixkEbait3xn9bkm8WsJzXtVsaJEn4c8Sam21u",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "melania",
-    "ticker": "MELANIA",
-    "sc": "FUAfBo2jgks6gB4Z4LfZkqSZgzNucisEHqnNebaRxM1P",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "met",
-    "ticker": "MET",
-    "sc": "METvsvVRapdj9cFLzq4Tr43xK4tAjQfwX76z3n6mWQL",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "mew",
-    "ticker": "MEW",
-    "sc": "MEW1gQWJ3nEXg2qgERiKu7FAFj79PHvQVREQUzScPP5",
-    "decimals": 5
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "michi",
-    "ticker": "MICHI",
-    "sc": "5mbK36SZ7J19An8jFochhQS4of8g6BwUjbeCSxBSoWdp",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "mnde",
-    "ticker": "MNDE",
-    "sc": "MNDEFzGvMt87ueuHvVU9VcTqsAP5b3fTGPsHuuPA5ey",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "moodeng",
-    "ticker": "MOODENG",
-    "sc": "ED5nyyWEzpPPiWimP8vYm7sD7TD3LAt3Q3gRTWHzPJBY",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "moonpig",
-    "ticker": "MOONPIG",
-    "sc": "Ai3eKAWjzKMV8wRwd41nVP83yqfbAVJykhvJVPxspump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "mother",
-    "ticker": "MOTHER",
-    "sc": "3S8qX1MsMqRbiwKg2cQyx7nis1oHMgaCuc9c4VfvVdPN",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "mplx",
-    "ticker": "MPLX",
-    "sc": "METAewgxyPbgwsseH8T16a39CQ5VyVxZi9zXiDPY18m",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "myro",
-    "ticker": "MYRO",
-    "sc": "HhJpBhRRn4g56VsyLuT8DL5Bv31HkXqsrahTTUCZeZg4",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "neiro",
-    "ticker": "NEIRO",
-    "sc": "CTJf74cTo3cw8acFP1YXF3QpsQUUBGBjh2k2e8xsZ6UL",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "neur",
-    "ticker": "NEUR",
-    "sc": "3N2ETvNpPNAxhcaXgkhKoY1yDnQfs41Wnxsx5qNJpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "nyan",
-    "ticker": "NYAN",
-    "sc": "NYANpAp9Cr7YarBNrby7Xx4xU6No6JKTBuohNA3yscP",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "orca",
-    "ticker": "ORCA",
-    "sc": "orcaEKTdK7LKz57vaAYr9QeNsVEPfiu6QeMU1kektZE",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "payai",
-    "ticker": "PAYAI",
-    "sc": "PAYmo6moDF3Ro3X6bU2jwe2UdBnBhv8YjLgL1j4DxGu",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "pengu",
-    "ticker": "PENGU",
-    "sc": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "pippin",
-    "ticker": "PIPPIN",
-    "sc": "Dfh5DzRgSvvCFDoYc2ciTkMrbDfRKybA4SoFbPmApump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "pnut",
-    "ticker": "PNUT",
-    "sc": "2qEHjDLDLbuBgRYvsxhc5D6uDWAivNFZGan56P1tpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "ponke",
-    "ticker": "PONKE",
-    "sc": "5z3EqYQo9HiCEs3R84RCDMu2n7anpDMxRhdK8PSWmrRC",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "popcat",
-    "ticker": "POPCAT",
-    "sc": "7GCihgDB8fe6KNjn2MYtkzZcRjQy3t9GHdC8uHYmW2hr",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "prcl",
-    "ticker": "PRCL",
-    "sc": "4LLbsb5ReP3yEtYzmXewyGjcir5uXtKFURtaEUVC2AHs",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "pump",
-    "ticker": "PUMP",
-    "sc": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "pundu",
-    "ticker": "PUNDU",
-    "sc": "WskzsKqEW3ZsmrhPAevfVZb6PuuLzWov9mJWZsfDePC",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "pyth",
-    "ticker": "PYTH",
-    "sc": "HZ1JovNiVvGrGNiiYvEozEVgZ58xaU3RKwX8eACQBCt3",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "ray",
-    "ticker": "RAY",
-    "sc": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "render",
-    "ticker": "RENDER",
-    "sc": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
-    "decimals": 8
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "rif",
-    "ticker": "RIF",
-    "sc": "GJtJuWD9qYcCkrwMBmtY1tpapV1sKfB2zUv9Q4aqpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "sao",
-    "ticker": "SAO",
-    "sc": "2HeykdKjzHKGm2LKHw8pDYwjKPiFEoXAz74dirhUgQvq",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "saros",
-    "ticker": "SAROS",
-    "sc": "SarosY6Vscao718M4A778z4CGtvcwcGef5M9MEH1LGL",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "silly",
-    "ticker": "SILLY",
-    "sc": "7EYnhQoR9YM3N7UoaKRoA44Uy8JeaZV3qyouov87awMs",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "skr",
-    "ticker": "SKR",
-    "sc": "SKRbvo6Gf7GondiT3BbTfuRDPqLWei4j2Qy2NPGZhW3",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "slerf",
-    "ticker": "SLERF",
-    "sc": "9999FVbjHioTcoJpoBiSjpxHW6xEn3witVuXKqBh2RFQ",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "slop",
-    "ticker": "SLOP",
-    "sc": "FqvtZ2UFR9we82Ni4LeacC1zyTiQ77usDo31DUokpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "sloth",
-    "ticker": "SLOTH",
-    "sc": "HQ7DaoiUxzC2K1Dr7KXRHccNtXvEYgNvoUextXe8dmBh",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "smole",
-    "ticker": "SMOLE",
-    "sc": "9Ttyez3xiruyj6cqaR495hbBkJU6SUWdV6AmQ9MvbyyS",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "sns",
-    "ticker": "SNS",
-    "sc": "SNSNkV9zfG5ZKWQs6x4hxvBRV6s8SqMfSGCtECDvdMd",
-    "decimals": 5
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "soon",
-    "ticker": "SOON",
-    "sc": "4eDf52YYzL6i6gbZ6FXqrLUPXbtP61f1gPSFM66M4XHe",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "spore",
-    "ticker": "SPORE",
-    "sc": "8bdhP1UQMevciC9oJ7NrvgDfoW8XPXPfbkkm6vKtMS7N",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "swarms",
-    "ticker": "SWARMS",
-    "sc": "74SBV4zDXxTRgv1pEMoECskKBkZHc2yGPnc7GYVepump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "swtch",
-    "ticker": "SWTCH",
-    "sc": "SW1TCHLmRGTfW5xZknqQdpdarB8PD95sJYWpNp9TbFx",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "tnsr",
-    "ticker": "TNSR",
-    "sc": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "tremp",
-    "ticker": "TREMP",
-    "sc": "FU1q8vJpZNUrmqsciSjp8bAKKidGsLmouB8CBdf8TKQv",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "trump",
-    "ticker": "TRUMP",
-    "sc": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "ufd",
-    "ticker": "UFD",
-    "sc": "eL5fUxj2J4CiQsmW85k5FG9DvuQjjUoBHoQBi2Kpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "uro",
-    "ticker": "URO",
-    "sc": "FvgqHMfL9yn39V79huDPy3YUNDoYJpuLWng2JfmQpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "usd1",
-    "ticker": "USD1",
-    "sc": "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "vine",
-    "ticker": "VINE",
-    "sc": "6AJcP7wuLwmRYLBNbi825wgguaPsWzPBEHcHndpRpump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "void",
-    "ticker": "VOID",
-    "sc": "6gh8b2mqUrVb6Ew8Mwt89tNyN9keCDNstzT5cdp5pump",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "w",
-    "ticker": "W",
-    "sc": "85VBFQZC9TZkfaptBWjvUw7YbZjy52A6mjtPGjstQAmQ",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "wap",
-    "ticker": "WAP",
-    "sc": "Bz7vVzQhm2KMW1XgcrDruYega1MiwrAs1DQysrx4tFkp",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "wen",
-    "ticker": "WEN",
-    "sc": "WENWENvqqNya429ubCdR81ZmD69brwQaaBYY6p3LCpk",
-    "decimals": 5
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "whales",
-    "ticker": "WHALES",
-    "sc": "GTH3wG3NErjwcf7VGCoXEXkgXSHvYhx5gtATeeM5JAS1",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "wif",
-    "ticker": "WIF",
-    "sc": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "wlkn",
-    "ticker": "WLKN",
-    "sc": "EcQCUYv57C4V6RoPxkVUiDwtX1SP8y8FP5AEToYL8Az",
-    "decimals": 9
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "zbcn",
-    "ticker": "ZBCN",
-    "sc": "ZBCNpuD7YMXzTHB2fhGkGi78MNsHGLRXUhRewNRm9RU",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "zerebro",
-    "ticker": "ZEREBRO",
-    "sc": "8x5VqbHA8D7NkD52uNuS5nnt3PwA8pLD34ymskeSo2Wn",
-    "decimals": 6
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "zero",
-    "ticker": "ZERO",
-    "sc": "93RC484oMK5T9H89rzT5qiAXKHGP9jscXfFfrihNbe57",
-    "decimals": 0
-  },
-  {
-    "cex": "HTX",
-    "nama_token": "zeus",
-    "ticker": "ZEUS",
-    "sc": "ZEUS1aR7aX8DFFJf5QjWj2ftDDdNTroMNGo8YoQm3Gq",
-    "decimals": 6
   },
   {
     "cex": "OKX",
@@ -17487,6 +16738,13 @@
   },
   {
     "cex": "OKX",
+    "nama_token": "Solana",
+    "ticker": "SOL",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "OKX",
     "nama_token": "Sonic SVM",
     "ticker": "SONIC",
     "sc": "SonicxvLud67EceaEzCLRnMTBqzYUUYNr93DBkBdDES",
@@ -17564,6 +16822,27 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "AAZ",
+    "ticker": "AAZ",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "Abi",
+    "ticker": "ABI",
+    "sc": "F2w7z5sVe72SXnkj5qc48KXgXY2Pzj1fNtJXarmGpump",
+    "decimals": 6
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "ACS",
+    "ticker": "ACS",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "actsol",
     "ticker": "ACTSOL",
     "sc": "GJAFwWjJ3vnTsrQVabjBVK2TYB1YtRCQXRDfDgUnpump",
@@ -17571,10 +16850,24 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "AURA",
+    "ticker": "AURA",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "AVA",
     "ticker": "AVA",
     "sc": "G8LfyGVsjsLzetJ5RWZVAhMo4H9cb58ET1Z6gEZJQdPM",
     "decimals": 8
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "BAN",
+    "ticker": "BAN",
+    "sc": "",
+    "decimals": 0
   },
   {
     "cex": "INDODAX",
@@ -17599,6 +16892,27 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "Collaterize",
+    "ticker": "COLLAT",
+    "sc": "C7heQqfNzdMbUFQwcHkL9FvdwsFsDRBnfwZDDyWYCLTZ",
+    "decimals": 6
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "DUPE",
+    "ticker": "DUPE",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "fartcoin",
+    "ticker": "FARTCOIN",
+    "sc": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+    "decimals": 6
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "FWOG",
     "ticker": "FWOG",
     "sc": "A8C3xuqscfmyLrte3VmTqrAq8kgMASius9AFNANwpump",
@@ -17610,6 +16924,13 @@
     "ticker": "GIGA",
     "sc": "63LfDmNb3MQ8mw9MtZ2To9bEA2M71kZUUGq5tiJxcqj9",
     "decimals": 5
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "Goatseus Maximus",
+    "ticker": "GOAT",
+    "sc": "CzLSujWBLFsSjncfkh59rUFqvafWcY5tzedWJSuypump",
+    "decimals": 6
   },
   {
     "cex": "INDODAX",
@@ -17634,10 +16955,24 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "HNST",
+    "ticker": "HNST",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "HNT",
     "ticker": "HNT",
     "sc": "hntyVP6YFm1Hg25TN9WGLqM12b8TQmcknKrdu1oxWux",
     "decimals": 8
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "HONEY",
+    "ticker": "HONEY",
+    "sc": "4vMsoUT2BWatFweudnQM1xedRLfJgJ7hswhcpz4xgBTy",
+    "decimals": 9
   },
   {
     "cex": "INDODAX",
@@ -17669,7 +17004,7 @@
   },
   {
     "cex": "INDODAX",
-    "nama_token": "Jito",
+    "nama_token": "JITO",
     "ticker": "JTO",
     "sc": "jtojtomepa8beP8AuQc6eXt5FriJwfFMwQx2v2f9mCL",
     "decimals": 9
@@ -17767,6 +17102,13 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "PAYAI",
+    "ticker": "PAYAI",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "Pengu",
     "ticker": "PENGU",
     "sc": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
@@ -17830,10 +17172,38 @@
   },
   {
     "cex": "INDODAX",
-    "nama_token": "Render Network",
+    "nama_token": "RED2",
+    "ticker": "RED2",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "RETARDIO",
+    "ticker": "RETARDIO",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "RFC",
+    "ticker": "RFC",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "Render",
     "ticker": "RENDER",
     "sc": "rndrizKT3MK1iimdxRdWabcF7Zg7AR5T4nud4EkHBof",
     "decimals": 8
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "SKBDI",
+    "ticker": "SKBDI",
+    "sc": "",
+    "decimals": 0
   },
   {
     "cex": "INDODAX",
@@ -17844,10 +17214,38 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "SLERFV2",
+    "ticker": "SLERFV2",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "SOLAYER",
+    "ticker": "SOLAYER",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "STIK",
+    "ticker": "STIK",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "Tensor",
     "ticker": "TNSR",
     "sc": "TNSRxcUxoT9xBG3de7PiJyTDYu7kskLqcpddxnEJAS6",
     "decimals": 9
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "TROLL",
+    "ticker": "TROLLSOL",
+    "sc": "5UUH9RTDiSpq6HKS6bp4NdU9PNJpXRXuiw6ShBTBhgH2",
+    "decimals": 6
   },
   {
     "cex": "INDODAX",
@@ -17879,10 +17277,31 @@
   },
   {
     "cex": "INDODAX",
+    "nama_token": "WHITEWHALE",
+    "ticker": "WHITEWHALE",
+    "sc": "a3W4qutoEJA4232T2gwZUfgYJTetr96pU4SJMwppump",
+    "decimals": 6
+  },
+  {
+    "cex": "INDODAX",
     "nama_token": "dogwifhat",
     "ticker": "WIF",
     "sc": "EKpQGSJtjMFqKZ9KQanSqYXRcF8fBopzLHYxdM65zcjm",
     "decimals": 6
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "WORMHOLE",
+    "ticker": "WORMHOLE",
+    "sc": "",
+    "decimals": 0
+  },
+  {
+    "cex": "INDODAX",
+    "nama_token": "XGD",
+    "ticker": "XGD",
+    "sc": "",
+    "decimals": 0
   },
   {
     "cex": "INDODAX",
